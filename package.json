@@ -1,0 +1,28 @@
+{
+  "name": "goodgame",
+  "version": "1.0.0",
+  "description": "A game catalog and sharing app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandraalday/Goodgame.git"
+  },
+  "author": "Alexandra Alday",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexandraalday/Goodgame/issues"
+  },
+  "homepage": "https://github.com/alexandraalday/Goodgame#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "ejs": "^2.5.7",
+    "express": "^4.15.3",
+    "express-session": "^1.15.5",
+    "method-override": "^2.3.9",
+    "mongoose": "^4.11.5"
+  }
+}
