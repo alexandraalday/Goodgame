@@ -1,5 +1,5 @@
 //	DEPENDENCIES
- const mongoose = require('mongoose');
+const mongoose = require('mongoose');
  
 // SCHEMA 
 const Schema = mongoose.Schema;
@@ -8,7 +8,6 @@ const gameSchema = Schema({
   platform: { type: Array, required: true },
   image: { type: Array, required: true },
   description: { type: Array },
-  likes: { type: Number }
  });
  
  const Game = mongoose.model('Game', gameSchema);

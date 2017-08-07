@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>goodgame</title>
+  </head>
+  <body>
+    <ul>
+      <% for(let i = 0; i < gamelists.length; i++) { %>
+          <li>
+            <a href="/gamelists/<%=gamelists[i].id%>"><%=gamelists[i].coverImage%></a>
+          </li>
+      <% } %>
+    </ul>
+  </body>
+</html>
