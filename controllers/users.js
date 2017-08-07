@@ -39,24 +39,7 @@ router.get('/:id/edit', (req, res)=>{
 router.put('/:id', (req, res)=>{
   	User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser)=>{
     	User.findByIdAndUpdate(req.params.id, req.body, (err, foundUser)=>{
-    		if (foundUser.username !== req.body.username){
-	      		for (let i = 0; i < foundUser.gamelists.length; i++){
-       				gamelistIds.push(foundUser.gamelists[i]._id);
-        			foundUser.gamelists[i].username = req.body.username;
-        			foundUser.save((err, savedUser)=>{
-          			for (let i = 0; i < gamelistIds.length; i++){
-           				Gamelist.findById(gamelistIds[i], (err, foundGamelist)=>{
-              			foundGamelist.username = req.body.username;
-              			foundGamelist.save((err, savedGamelist)=>{
-                			return res.redirect('/users/' + req.params.id);
-              				});
-            			});
-          			}
-        			});
-      			}
-    		} else {
-        		return res.redirect('/users/' + req.params.id);
-    		}
+        	res.redirect('/users/' + req.params.id);
  		});	
 	});
 });
@@ -85,6 +68,11 @@ router.delete('/:id', (req, res)=>{
         }
       },
       (err, removedGamelists)=>{
+      	Game.remove({
+      		_id: {
+      			$in: removedGamelists.games.id
+      		}
+      	})
         res.redirect('/users');
       }
     );

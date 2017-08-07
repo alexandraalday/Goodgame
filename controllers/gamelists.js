@@ -35,9 +35,19 @@ router.get('/:id/edit', (req, res)=>{
 
 // edit gamelist games 
 router.get('/edit-games/:id', (req, res)=>{
-  Gamelist.findById(req.params.id, (err, foundGamelist)=>{
-    res.render('games/games-edit.ejs', {
-      gamelist: foundGamelist
+  Game.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedGames)=>{
+    Gamelist.findOne({ 'games._id': req.params.id }, (err, foundGamelist)=>{
+      foundGamelist.games.remove();
+      foundGamelist.games = updatedGames;
+      foundGamelist.save((err, savedGamelist)=>{
+        User.findOne({'username': savedGamelist.author}, (err, foundUser)=>{
+          foundUser.gamelists.id(savedGamelist.id).remove();
+          foundUser.gamelists.push(savedGamelist);
+          foundUser.save((err, savedUser)=>{
+            res.redirect('/gamelists/' + savedGamelist.id);
+          });
+        });
+      });
     });
   });
 });
@@ -45,11 +55,11 @@ router.get('/edit-games/:id', (req, res)=>{
 // edit gamelist info
 router.put('/:id', (req, res)=>{
   Gamelist.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedGamelist)=>{
-      User.findOne({ 'username': updatedGamelist.username }, (err, foundUser)=>{
+      User.findOne({ 'username': updatedGamelist.author }, (err, foundUser)=>{
         foundUser.gamelists.id(req.params.id).remove();
         foundUser.gamelists.push(updatedGamelist);
         foundUser.save((err, savedUser)=>{
-          res.redirect('/gamelists');
+          res.redirect('/gamelists/edit-games/' + updatedGamelist.games.id);
          });
       });
   });
@@ -73,7 +83,7 @@ router.get('/:id/add-games', (req, res)=>{
 // gamelist show page
 router.get('/:id', (req, res)=>{
   Gamelist.findById(req.params.id, (err, foundGamelist)=>{
-   User.findOne({ 'username': foundGamelist.username }, function(err, foundUser){
+   User.findOne({ 'username': foundGamelist.author }, function(err, foundUser){
       res.render('gamelists/gamelists-show.ejs', {
         gamelist: foundGamelist,
         user: foundUser
@@ -96,7 +106,7 @@ router.post('/:id', (req, res)=>{
     Gamelist.findById(req.params.id, (err, foundGamelist)=>{
       foundGamelist.games = createdGames;
       foundGamelist.save((err, savedGamelist)=>{
-        User.findOne({'username': savedGamelist.username}, (err, foundUser)=>{
+        User.findOne({'username': savedGamelist.author}, (err, foundUser)=>{
           foundUser.gamelists.push(savedGamelist);
           foundUser.save((err, savedUser)=>{
             res.redirect('/gamelists');
@@ -110,10 +120,12 @@ router.post('/:id', (req, res)=>{
 // delete route
 router.delete('/:id', (req, res)=>{
   Gamelist.findByIdAndRemove(req.params.id, (err, deletedGamelist)=>{
-    User.findOne({ 'username': deletedGamelist.username}, (err, foundUser)=>{
+    User.findOne({ 'username': deletedGamelist.author}, (err, foundUser)=>{
       foundUser.gamelists.id(req.params.id).remove();
       foundUser.save((err, savedUser)=>{
-         res.redirect('/gamelists');
+        Game.findByIdAndRemove(deletedGamelist.games._id, (err, foundGames)=>{
+          res.redirect('/gamelists');
+        });
        });
      });
    });
