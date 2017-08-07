@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexandraalday/Goodgame.git"
+    "url": "git+https://github.com/alexandraalday/goodgame.git"
   },
   "author": "Alexandra Alday",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alexandraalday/Goodgame/issues"
+    "url": "https://github.com/alexandraalday/goodgame/issues"
   },
-  "homepage": "https://github.com/alexandraalday/Goodgame#readme",
+  "homepage": "https://github.com/alexandraalday/goodgame#readme",
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",

@@ -22,9 +22,11 @@
           </li>
       <% } %>
     </ul>
+    <% if(currentUser.username === gamelist.author) { %>
     	<a href="/gamelists/<%=gamelist.id%>/edit">EDIT</a>	
         <form action="/gamelists/<%=gamelist.id%>?_method=DELETE" method="POST">
      		<input type="submit" value="DELETE" />
     	</form>
+    <% } %>
   </body>
 </html>

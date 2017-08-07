@@ -16,14 +16,19 @@ router.get('/', (req, res)=>{
 
 // new user page
 router.get('/new', (req, res)=>{
-  res.render('users/users-new.ejs');
+	if(!req.session.currentUser) { //user must be logged out to create a new account
+    	return res.render('users/users-new.ejs');
+  	} else {
+    	return res.send('This user already has an account. You must logout to create a new one.');
+	}
 });
 
 // show page
 router.get('/:id', (req, res)=>{
   User.findById(req.params.id, (err, foundUser)=>{
     res.render('users/users-show.ejs', {
-      user: foundUser
+      user: foundUser,
+      currentUser: req.session.currentUser
     });
   });
 });
@@ -31,9 +36,13 @@ router.get('/:id', (req, res)=>{
 // edit page
 router.get('/:id/edit', (req, res)=>{
   User.findById(req.params.id, (err, foundUser)=>{
-    res.render('users/users-edit.ejs', {
-      user: foundUser
-    });
+    if(req.session.currentUser.username === foundUser.username){ //user can only edit their account
+      return res.render('users/users-edit.ejs', {
+        user: foundUser
+      });
+    } else {
+        return res.send('you do not have permission to edit this account');
+    }
   });
 });
 
@@ -75,7 +84,7 @@ router.delete('/:id', (req, res)=>{
       			$in: removedGamelists.games.id
       		}
       	})
-        res.redirect('/users');
+        return res.redirect('/users');
       }
     );
   });

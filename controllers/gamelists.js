@@ -17,19 +17,27 @@ router.get('/', (req, res)=>{
 
 // new gamelist
 router.get('/new', (req, res)=>{
-  User.find({}, (err, foundUsers)=>{
-    res.render('gamelists/gamelists-new.ejs', {
-      users: foundUsers
+  if(req.session.currentUser){ //only logged in users can crete a gamelist
+    User.find({}, (err, foundUsers)=>{
+      res.render('gamelists/gamelists-new.ejs', {
+        users: foundUsers
+      });
     });
-  });
+  } else {
+      res.send('you must be logged in to create playlists');
+  }
 });
  
 // edit gamelist
 router.get('/:id/edit', (req, res)=>{
   Gamelist.findById(req.params.id, (err, foundGamelist)=>{
-    res.render('gamelists/gamelists-edit.ejs', {
-      gamelist: foundGamelist
-    });
+    if(req.session.currentUser.username === foundGamelist.author) {
+      res.render('gamelists/gamelists-edit.ejs', {
+        gamelist: foundGamelist
+      });
+    } else {
+        res.send('you do not have permission to edit this playlist');
+    }
   });
 });
 
