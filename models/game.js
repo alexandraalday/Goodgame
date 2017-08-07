@@ -2,12 +2,11 @@
 const mongoose = require('mongoose');
  
 // SCHEMA 
-const Schema = mongoose.Schema;
-const gameSchema = Schema({
+const gameSchema = mongoose.Schema({
   title: { type: Array, required: true },
   platform: { type: Array, required: true },
   image: { type: Array, required: true },
-  description: { type: Array },
+  description: { type: Array }
  });
  
  const Game = mongoose.model('Game', gameSchema);

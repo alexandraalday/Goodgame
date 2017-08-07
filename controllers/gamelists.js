@@ -33,6 +33,35 @@ router.get('/:id/edit', (req, res)=>{
   });
 });
 
+// edit gamelist games 
+router.get('/edit-games/:id', (req, res)=>{
+  Gamelist.findById(req.params.id, (err, foundGamelist)=>{
+    res.render('games/games-edit.ejs', {
+      gamelist: foundGamelist
+    });
+  });
+});
+
+// edit gamelist info
+router.put('/:id', (req, res)=>{
+  Gamelist.findByIdAndUpdate(req.params.id, req.body, (err, updatedGamelist)=>{
+      User.findOne({ 'username': updatedGamelist.username }, (err, foundUser)=>{
+        foundUser.gamelists.id(req.params.id).remove();
+        foundUser.gamelists.push(updatedGamelist);
+        foundUser.save((err, savedUser)=>{
+          res.redirect('/gamelists');
+         });
+      });
+  });
+});
+
+
+router.put('/edit-games/:id', (req, res)=>{
+  Gamelist.findById(req.params.id, (err, foundGamelist)=>{
+    console.log('placeholder');
+  });
+});
+
 
 //add games to gameslist
 router.get('/:id/add-games', (req, res)=>{
@@ -58,7 +87,7 @@ router.post('/', (req, res)=>{
   });
 });
  
-// games into playlist
+// games into gamelist
 router.post('/:id', (req, res)=>{
   Game.create(req.body, (err, createdGames)=>{
     Gamelist.findById(req.params.id, (err, foundGamelist)=>{
