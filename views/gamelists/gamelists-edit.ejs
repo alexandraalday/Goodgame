@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>goodgame</title>
+  </head>
+  <body>
+    <form action="/gamelists/<%=gamelist.id%>?_method=PUT" method="POST">
+      <input type="text" name="coverImage" placeholder="cover image" value="<%=gamelist.coverImage%>">
+      <input type="text" name="description" placeholder="description" value="<%=gamelist.description%>">
+      <input type="submit" value="edit" />
+    </form>
+  </body>
+</html>

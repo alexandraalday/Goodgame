@@ -6,7 +6,7 @@ const Game = require('..models/game.js');
 const router = express.Router();
  
 //  GET ROUTE
-//index
+// index
 router.get('/', (req, res)=>{
   Gamelist.find({}, (err, foundGamelists)=>{
     res.render('gamelists/gamelists-index.ejs', {
@@ -15,7 +15,7 @@ router.get('/', (req, res)=>{
   });
 });
 
-//new gamelist
+// new gamelist
 router.get('/new', (req, res)=>{
   User.find({}, (err, foundUsers)=>{
     res.render('gamelists/gamelists-new.ejs', {
@@ -24,6 +24,16 @@ router.get('/new', (req, res)=>{
   });
 });
  
+// edit gamelist
+router.get('/:id/edit', (req, res)=>{
+  Gamelist.findById(req.params.id, (err, foundGamelist)=>{
+    res.render('gamelists/gamelists-edit.ejs', {
+      gamelist: foundGamelist
+    });
+  });
+});
+
+
 //add games to gameslist
 router.get('/:id/add-games', (req, res)=>{
   res.render('games/games-new.ejs', {
@@ -35,7 +45,7 @@ router.get('/:id/add-games', (req, res)=>{
 router.get('/:id', (req, res)=>{
   Gamelist.findById(req.params.id, (err, foundGamelist)=>{
     res.render('gamelists/gamelists-show.ejs', {
-      playlist: foundGamelist
+      gamelist: foundGamelist
     });
   });
 });
@@ -48,16 +58,33 @@ router.post('/', (req, res)=>{
   });
 });
  
-// games into the playlist
+// games into playlist
 router.post('/:id', (req, res)=>{
   Game.create(req.body, (err, createdGames)=>{
     Gamelist.findById(req.params.id, (err, foundGamelist)=>{
       foundGamelist.games = createdGames;
       foundGamelist.save((err, savedGamelist)=>{
-        res.redirect('/gamelists');
+        User.findOne({'username': savedGamelist.username}, (err, foundUser)=>{
+          foundUser.gamelists.push(savedGamelist);
+          foundUser.save((err, savedUser)=>{
+            res.redirect('/gamelists');
+          });
+        });
       });
     });
   });
+});
+
+// delete route
+router.delete('/:id', (req, res)=>{
+  Gamelist.findByIdAndRemove(req.params.id, (err, deletedGamelist)=>{
+    User.findOne({ 'username': deletedGamelist.username}, (err, foundUser)=>{
+      foundUser.gamelists.id(req.params.id).remove();
+      foundUser.save((err, savedUser)=>{
+         res.redirect('/gamelists');
+       });
+     });
+   });
 });
  
 //  EXPORT 
