@@ -2,7 +2,7 @@
 const express = require('express');
 const User = require('../models/user.js');
 const Gamelist = require('../models/gamelist.js');
-const Game = require('..models/game.js');
+const Game = require('../models/game.js');
 const router = express.Router();
  
 //  GET ROUTE
@@ -44,7 +44,7 @@ router.get('/edit-games/:id', (req, res)=>{
 
 // edit gamelist info
 router.put('/:id', (req, res)=>{
-  Gamelist.findByIdAndUpdate(req.params.id, req.body, (err, updatedGamelist)=>{
+  Gamelist.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedGamelist)=>{
       User.findOne({ 'username': updatedGamelist.username }, (err, foundUser)=>{
         foundUser.gamelists.id(req.params.id).remove();
         foundUser.gamelists.push(updatedGamelist);
@@ -73,8 +73,11 @@ router.get('/:id/add-games', (req, res)=>{
 // gamelist show page
 router.get('/:id', (req, res)=>{
   Gamelist.findById(req.params.id, (err, foundGamelist)=>{
-    res.render('gamelists/gamelists-show.ejs', {
-      gamelist: foundGamelist
+   User.findOne({ 'username': foundGamelist.username }, function(err, foundUser){
+      res.render('gamelists/gamelists-show.ejs', {
+        gamelist: foundGamelist,
+        user: foundUser
+      });
     });
   });
 });

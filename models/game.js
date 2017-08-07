@@ -9,7 +9,7 @@ const gameSchema = mongoose.Schema({
   description: { type: Array }
  });
  
- const Game = mongoose.model('Game', gameSchema);
+const Game = mongoose.model('Game', gameSchema);
  
 //	EXPORT
 module.exports = Game;

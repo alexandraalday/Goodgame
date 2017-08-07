@@ -1,5 +1,7 @@
 //	DEPENDENCIES
 const mongoose = require('mongoose');
+const Gamelist = require('./gamelist.js');
+const Game = require('./game.js')
 
 //	SCHEMA
 const userSchema = mongoose.Schema({
