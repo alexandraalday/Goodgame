@@ -5,9 +5,26 @@
     <title>goodgame</title>
   </head>
   <body>
+  
    	goodgame index page
 
    	<a href="/users">users</a>
    	<a href="/gamelists">gamelists</a>
+
+
+   	<% if(currentUser) {%>
+    	<a href="/gamelists">gamelists</a>
+    	<a href="/users">users</a><br />
+
+      	<form action="/sessions?_method=DELETE" method="POST">
+       		<input type="submit" value="logout" />
+      	</form>
+    <% } %>
+
+    <% if(!currentUser) {%>
+    	<a href="/sessions/new">log in</a> 
+    	<a href="/users/new">new here? register now</a>
+    <% } %>
+
   </body>
 </html>

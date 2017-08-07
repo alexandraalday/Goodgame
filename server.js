@@ -30,13 +30,14 @@ app.use('/users', userController);
 const gamelistController = require('./controllers/gamelists.js');
 app.use('/gamelists', gamelistController);
 
-// const sessionsController = require('./controllers/sessions.js');
-// app.use('/sessions', sessionsController);
+const sessionsController = require('./controllers/sessions.js');
+app.use('/sessions', sessionsController);
 
 
 //	INDEX ROUTE
 app.get('/', (req, res)=>{
   res.render('index.ejs', {
+  	currentUser: req.session.currentUser
   });
 });
 

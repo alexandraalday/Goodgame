@@ -1,5 +1,6 @@
 //	DEPENDENCIES
 const express = require('express');
+const bcrypt = require('bcrypt');
 const User = require('../models/user.js');
 const router = express.Router();
 
@@ -46,12 +47,13 @@ router.put('/:id', (req, res)=>{
 
 //	create user
 router.post('/', (req, res)=>{
-  if(req.body.icon === ""){ 
-    req.body.icon = undefined; 
-  };
-  User.create(req.body, ()=>{
-    res.redirect('/users');
-  });
+	req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+  	if(req.body.icon === ""){ 
+    	req.body.icon = undefined; 
+  	};
+  	User.create(req.body, ()=>{
+   		res.redirect('/users');
+  	});
 });
 
 // delete user
