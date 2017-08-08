@@ -7,13 +7,6 @@
   <body>
       <form action="/gamelists" method="POST">
         <input type="text" name="title" placeholder="title">
-        <select name="user">
-          <% for(var i = 0; i < users.length; i++) { %>
-              <option>
-                <%=users[i].username%>
-              </option>
-          <% } %>
-        </select>
         <input type="text" name="coverImage" placeholder="gamelist cover image link">
         <input type="text" name="description" placeholder="gamelist description">
         <input type="submit" value="CREATE" />

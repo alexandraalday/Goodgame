@@ -91,10 +91,11 @@ router.get('/:id/add-games', (req, res)=>{
 // gamelist show page
 router.get('/:id', (req, res)=>{
   Gamelist.findById(req.params.id, (err, foundGamelist)=>{
-   User.findOne({ 'username': foundGamelist.author }, function(err, foundUser){
+   User.findOne({ 'username': foundGamelist.author }, (err, foundUser)=>{
       res.render('gamelists/gamelists-show.ejs', {
         gamelist: foundGamelist,
-        user: foundUser
+        user: foundUser,
+        currentUser: req.session.currentUser
       });
     });
   });
@@ -103,6 +104,7 @@ router.get('/:id', (req, res)=>{
 //  POST ROUTE
 // create a gamelist
 router.post('/', (req, res)=>{
+  req.body.author = req.session.currentUser.username; //curent user is listed as gamelist author
   Gamelist.create(req.body, (err, createdGamelist)=>{
     res.redirect('/gamelists/' + createdGamelist.id + '/add-games');
   });
