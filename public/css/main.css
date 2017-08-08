@@ -226,28 +226,6 @@ footer {
   }
 }
 
-@media only screen and (max-width: 768px) {
-  /*Once 767 width reached, hide normal nav and display icon nav*/
-  #navigation {
-    display: none;
-  }
-  /*Using floats on header and right classes help them stay in the right place on screen resize*/
-  .navbar-header {
-    display: inline-block;
-    float: left;
-  }
-  .navbar-right {
-    float: right;
-  }
-  #mobile-nav {
-    display: inline;
-    white-space: nowrap;
-  }
-  #mobile-nav ul li {
-    display: inline-block;
-    padding: 0;
-  }
-}
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
   /* Hide hover effects for mobile */
