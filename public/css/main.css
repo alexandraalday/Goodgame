@@ -1,0 +1,281 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+}
+
+section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.separator {
+  max-width: 300px;
+  margin: 0 auto 15px auto;
+}
+
+.separator-light {
+  border-top: solid 3px #fff;
+  color: #fff;
+}
+
+.separator-dark {
+  border-top: solid 3px;
+}
+
+/* intro styles */
+
+#heading {
+  background: transparent;
+  min-height: 100%;
+  position: relative;
+}
+
+ /* code to apply filter to background from stackoverflow.com */
+#heading:before {
+  content: ' ';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  background: url("http://www.zero1gaming.com/wp-content/uploads/2014/07/8bit-heart.png") center center fixed no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-filter: brightness(50%);
+  -moz-filter: brightness(50%);
+  -o-filter: brightness(50%);
+  -ms-filter: brightness(50%);
+  filter: brightness(50%);
+}
+
+.intro-text {
+  color: #fff;
+  padding: 100px 0;
+}
+
+
+
+
+
+/* portfolio styles */
+
+
+/* code for caption hover effects from Codrops and K. Anthony;  slightly modified*/
+figure {
+  position: relative;
+  overflow: hidden;
+  margin: 15px auto;
+  max-width: 578px;
+  max-height: 398px;
+  height: auto;
+}
+
+figure img {
+  position: relative;
+  display: block;
+  opacity: 0.7;
+}
+
+figure figcaption {
+  padding: 1em;
+  color: #fff;
+  font-size: 1.25em;
+}
+
+figure figcaption,
+figure figcaption > a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+figure h2 {
+  word-spacing: -0.15em;
+  font-weight: 200;
+}
+
+figure h2 span {
+  font-weight: 500;
+}
+
+figure h2,
+figure p {
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+figure.effect-portfolio {
+  background: #333;
+}
+
+figure.effect-portfolio img,
+figure.effect-portfolio h2 {
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+}
+
+figure.effect-portfolio h2,
+figure.effect-portfolio p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 30px;
+}
+
+figure.effect-portfolio p {
+  text-transform: none;
+  font-size: 90%;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(0, 50px, 0);
+  transform: translate3d(0, 50px, 0);
+}
+
+figure.effect-portfolio:hover img {
+  -webkit-transform: translate3d(0, -80px, 0);
+  transform: translate3d(0, -80px, 0);
+}
+
+figure.effect-portfolio:hover h2 {
+  -webkit-transform: translate3d(0, -100px, 0);
+  transform: translate3d(0, -100px, 0);
+}
+
+figure.effect-portfolio:hover p {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+
+/* about-me styles */
+#about-me {
+  font-size: 1.5em;
+  background: #ef1a28;
+  color: #fff;
+}
+
+
+/* contact styles */
+
+.social {
+
+  padding: 0px;
+}
+
+.social li {
+	list-style: none;
+  	display: inline-block;
+  	margin: 10px;
+}
+
+.social li a {
+  display: inline-block;
+  color: #ef1a28;
+  width: 50px;
+  height: 50px;
+}
+
+#github, #linked-in, #twitter {
+  border-radius: 50%;
+  border: solid 2px #ef1a28;
+  font-size: 1.5em;
+  padding: 10px;
+}
+
+
+
+/*footer styles*/
+
+footer { 
+  font-weight: bold; 
+  margin: 1%;
+  text-align: center;
+}
+
+
+
+/****** Media Queries *****/
+
+@media only screen and (max-width: 950px) {
+  figure.effect-portfolio p {
+    font-size: 90%
+  }
+  figure h2 {
+    font-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /*Once 767 width reached, hide normal nav and display icon nav*/
+  #navigation {
+    display: none;
+  }
+  /*Using floats on header and right classes help them stay in the right place on screen resize*/
+  .navbar-header {
+    display: inline-block;
+    float: left;
+  }
+  .navbar-right {
+    float: right;
+  }
+  #mobile-nav {
+    display: inline;
+    white-space: nowrap;
+  }
+  #mobile-nav ul li {
+    display: inline-block;
+    padding: 0;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+  /* Hide hover effects for mobile */
+  figure.effect-portfolio:hover img {
+    -webkit-transform: none;
+    transform: none;
+  }
+  figure.effect-portfolio:hover h2 {
+    -webkit-transform: none;
+    transform: none;
+  }
+  figure.effect-portfolio:hover p {
+    opacity: 0;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 950px) {
+  .intro-text {
+    color: #fff;
+    padding: 200px 0;
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  .intro-text {
+    color: #fff;
+    padding: 300px 0;
+  }
+}

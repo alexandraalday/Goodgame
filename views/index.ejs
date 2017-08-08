@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>goodgame</title>
+    <% include ./partials/head.ejs %>
+    <link rel="stylesheet" type="text/css" href="../css/main.css"> 
   </head>
   <body>
+  	<% include ./partials/nav.ejs %>
   
-   	goodgame index page
+ 
 
-   	<a href="/users">users</a>
-   	<a href="/gamelists">gamelists</a>
-
-
+ 
    	<% if(currentUser) {%>
     	<a href="/gamelists">gamelists</a>
     	<a href="/users">users</a><br />
@@ -22,9 +20,178 @@
     <% } %>
 
     <% if(!currentUser) {%>
-    	<a href="/sessions/new">log in</a> 
-    	<a href="/users/new">new here? register now</a>
+    	<a href="/sessions/new">login</a> 
+    	<a href="/users/new">register</a>
     <% } %>
+
+
+<header>
+  <div class="jumbotron text-center" id="heading">
+    <div class="container intro-text">
+      <h1>Hello!</h1>
+      <hr class="separator separator-light">
+      <h2>
+        Come find out what games your friends are playing
+      </h2>
+    </div>
+  </div>
+</header>
+
+
+
+<!-- begin portfolio section -->
+  <section id="portfolio" name="portfolio">
+  <div class="container">
+    <div class="row text-center">
+      <h1>Gamelists</h1>
+      <hr class="separator separator-dark">
+    </div>
+    <!-- end section title row -->
+    <div class="row">
+      <div class="col-md-4 portfolio-item">
+        <figure class="effect-portfolio">
+          <img class="img-responsive" src="https://openclipart.org/download/227918/Video-Game-Controller-Icon.svg" alt="Sample Gamelist">
+          <figcaption>
+            <h2>Sample
+            <span>Gamelist</span></h2>
+            <p>A sample gamelist.
+            </p>
+            <a href="" target='_blank'></a>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-4 portfolio-item">
+        <figure class="effect-portfolio">
+          <img class="img-responsive" src="https://openclipart.org/download/227918/Video-Game-Controller-Icon.svg" alt="Sample Gamelist">
+          <figcaption>
+            <h2>Sample
+            <span>Gamelist</span></h2>
+            <p>A sample gamelist.
+            </p>
+            <a href="" target='_blank'></a>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-4 portfolio-item">
+        <figure class="effect-portfolio">
+          <img class="img-responsive" src="https://openclipart.org/download/227918/Video-Game-Controller-Icon.svg" alt="Sample Gamelist">
+          <figcaption>
+            <h2>Sample
+            <span>Gamelist</span></h2>
+            <p>A sample gamelist.
+            </p>
+            <a href="" target='_blank'></a>
+          </figcaption>
+        </figure>
+      </div>
+      <!-- end column -->
+      <div class="col-md-4 portfolio-item">
+        <figure class="effect-portfolio">
+          <img class="img-responsive" src="https://openclipart.org/download/227918/Video-Game-Controller-Icon.svg" alt="Sample Gamelist">
+          <figcaption>
+            <h2>Sample
+            <span>Gamelist</span></h2>
+            <p>A sample gamelist.
+            </p>
+            <a href="" target='_blank'></a>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-4 portfolio-item">
+        <figure class="effect-portfolio">
+          <img class="img-responsive" src="https://openclipart.org/download/227918/Video-Game-Controller-Icon.svg" alt="Sample Gamelist">
+          <figcaption>
+            <h2>Sample
+            <span>Gamelist</span></h2>
+            <p>A sample gamelist.
+            </p>
+            <a href="" target='_blank'></a>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-4 portfolio-item">
+        <figure class="effect-portfolio">
+          <img class="img-responsive" src="https://openclipart.org/download/227918/Video-Game-Controller-Icon.svg" alt="Sample Gamelist">
+          <figcaption>
+            <h2>Sample
+            <span>Gamelist</span></h2>
+            <p>A sample gamelist.
+            </p>
+            <a href="" target='_blank'></a>
+          </figcaption>
+        </figure>
+      </div>
+      <!-- end column -->
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end container -->
+</section>
+<!-- end  portfolio section -->
+
+
+
+<!-- begin about-me section -->
+<section id="about-me">
+  <div class="container">
+    <div class="row text-center">
+      <h1>Join Us!</h1>
+      <hr class="separator separator-dark">
+    </div>
+    <div class="row ">
+      <div class="col-md-5 col-md-offset-1">
+        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+        </p>
+      </div>
+
+      <div class="col-md-5">
+        <p>
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end container -->
+</section>
+<!-- end about-me section -->
+
+
+
+<!-- begin contact section -->
+<section id="contact">
+  <div class="container">
+    <h1 class='text-center'>Say hello!</h1>
+    <hr class="separator separator-dark">
+    <ul class="social text-center">
+      <li>
+        <a id="twitter" href='https://www.twitter.com/hellionoftroyxx' target="_blank"><i class="fa fa-twitter"></i></a>
+      </li>
+      <li>
+        <a id="linked-in" href='https://www.linkedin.com/in/alexandra-alday' target="_blank"><i class="fa fa-linkedin"></i></a>
+      </li>
+      <li>
+        <a id="github" href="https://github.com/alexandraalday" target="_blank"><i class="fa fa-github"></i></a>
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- end contact section -->
+
+<!-- footer section -->
+<footer>Made with &hearts; by Alexandra Alday
+</footer>
+<!-- end footer section -->
 
   </body>
 </html>

@@ -2,6 +2,8 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../models/user.js');
+const Gamelist = require('../models/gamelist.js');
+const Game = require('../models/game.js');
 const router = express.Router();
 
 //	GET ROUTE
@@ -68,9 +70,11 @@ router.post('/', (req, res)=>{
 // delete user
 router.delete('/:id', (req, res)=>{
   User.findByIdAndRemove(req.params.id, (err, deletedUser)=>{
-    var gamelistIds = [];
+    let gamelistIds = [];
+    let gameIds = [];
     for(let i = 0; i < deletedUser.gamelists.length; i++){
-      gamelistIds.push(deletedUser.gamelists[i]._id);
+    	gamelistIds.push(deletedUser.gamelists[i]._id);
+    	songIds.push(deletedUser.gamelists[i].games._id);
     };
     Gamelist.remove(
       {
@@ -81,14 +85,37 @@ router.delete('/:id', (req, res)=>{
       (err, removedGamelists)=>{
       	Game.remove({
       		_id: {
-      			$in: removedGamelists.games.id
+      			$in: gameIds
       		}
-      	})
-        return res.redirect('/users');
-      }
-    );
-  });
-})
+      	},
+      	(err, removedGames)=>{
+        	req.session.destroy(()=>{
+           		res.redirect('/');
+          		});
+      		});
+    	});
+	});
+});
+
+// seed data
+router.get('/seed', (req, res)=>{
+	User.create([
+		{
+			 username: "hellionoftroy",
+			 password: "p00p",
+	     icon: "http://static.tumblr.com/132fe3d842522ec66aebdef5463122d6/qsi2ine/JcKnk73b0/tumblr_static_7o1ldyzud3oc4owgsw0sc08ss.gif",
+			 description: "i made this"
+		}, {
+			 username: "test",
+			 password: "test",
+	     icon: "",
+	     description: "i am a test"
+		}
+	], (err, data)=>{
+		res.redirect('/users')
+	})
+});
+
 
 //	EXPORT
 module.exports = router;

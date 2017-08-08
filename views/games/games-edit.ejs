@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>goodgame</title>
+    <% include ../partials/head.ejs %>
   </head>
   <body>
-  		edit page placeholder in case API call doesn't work
+ <% include ../partials/nav.ejs %>
 
     <form action="/gamelists/edit-games/<%=games.id%>?_method=PUT" method="POST">
     <% for(let i = 0; i < games.title.length; i++){ %>
