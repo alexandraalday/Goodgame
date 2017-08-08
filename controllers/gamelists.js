@@ -8,9 +8,13 @@ const router = express.Router();
 //  GET ROUTE
 // index
 router.get('/', (req, res)=>{
-  Gamelist.find({}, (err, foundGamelists)=>{
-    res.render('gamelists/gamelists-index.ejs', {
-      gamelists: foundGamelists
+  User.find({}, (err, foundUsers)=>{
+    Gamelist.find({}, (err, foundGamelists)=>{
+      res.render('gamelists/gamelists-index.ejs', {
+        gamelists: foundGamelists, 
+        users: foundUsers,
+        currentUser: req.session.currentUser
+      });
     });
   });
 });
@@ -20,7 +24,8 @@ router.get('/new', (req, res)=>{
   if(req.session.currentUser){ //only logged in users can crete a gamelist
     User.find({}, (err, foundUsers)=>{
       res.render('gamelists/gamelists-new.ejs', {
-        users: foundUsers
+        users: foundUsers,
+        currentUser: req.session.currentUser
       });
     });
   } else {
@@ -31,13 +36,15 @@ router.get('/new', (req, res)=>{
 // edit gamelist
 router.get('/:id/edit', (req, res)=>{
   Gamelist.findById(req.params.id, (err, foundGamelist)=>{
-    if(req.session.currentUser.username === foundGamelist.author) {
-      res.render('gamelists/gamelists-edit.ejs', {
-        gamelist: foundGamelist
+    if(req.session.currentUser){
+      if(req.session.currentUser.username === foundGamelist.author) {
+        return res.render('gamelists/gamelists-edit.ejs', {
+          gamelist: foundGamelist,
       });
-    } else {
+      } else {
         res.send('you do not have permission to edit this playlist');
-    }
+      };
+    };
   });
 });
 
@@ -81,12 +88,7 @@ router.put('/edit-games/:id', (req, res)=>{
 });
 
 
-//add games to gameslist
-router.get('/:id/add-games', (req, res)=>{
-  res.render('games/games-new.ejs', {
-    gamelistId: req.params.id
-  });
-});
+
  
 // gamelist show page
 router.get('/:id', (req, res)=>{
@@ -97,6 +99,16 @@ router.get('/:id', (req, res)=>{
         user: foundUser,
         currentUser: req.session.currentUser
       });
+    });
+  });
+});
+
+//add games to gameslist
+router.get('/:id/add-games', (req, res)=>{
+  Gamelist.findById(req.params.is, (err, foundPlaylist)=>{
+    res.render('games/games-new.ejs', {
+      gamelistId: req.params.id,
+      gamelist: foundGamelist
     });
   });
 });

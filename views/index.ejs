@@ -6,23 +6,6 @@
   </head>
   <body>
   	<% include ./partials/nav.ejs %>
-  
- 
-
- 
-   	<% if(currentUser) {%>
-    	<a href="/gamelists">gamelists</a>
-    	<a href="/users">users</a><br />
-
-      	<form action="/sessions?_method=DELETE" method="POST">
-       		<input type="submit" value="logout" />
-      	</form>
-    <% } %>
-
-    <% if(!currentUser) {%>
-    	<a href="/sessions/new">login</a> 
-    	<a href="/users/new">register</a>
-    <% } %>
 
 
 <header>
@@ -33,6 +16,8 @@
       <h2>
         Come find out what games your friends are playing
       </h2>
+
+      <a id="scroll" href="#portfolio"><i class="fa  fa-angle-down"></i></a>
     </div>
   </div>
 </header>

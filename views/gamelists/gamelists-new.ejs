@@ -6,11 +6,41 @@
   <body>
   <% include ../partials/nav.ejs %>
 
-      <form action="/gamelists" method="POST">
-        <input type="text" name="title" placeholder="title">
-        <input type="text" name="coverImage" placeholder="gamelist cover image link">
-        <input type="text" name="description" placeholder="gamelist description">
-        <input type="submit" value="CREATE" />
-      </form>
+  <main style="padding-top: 70px">
+
+<!--  new user form -->
+<form class="form-horizontal" action="/gamelists" method="POST">
+  <fieldset>
+    <legend class="col-lg-10 col-lg-offset-2">New Gamelist</legend>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Title</label>
+      <div class="col-lg-6">
+        <input class="form-control" name="title" placeholder="title" type="text">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Cover Image</label>
+      <div class="col-lg-6">
+        <input class="form-control" name="coverImage" placeholder="image URL" type="text">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Description</label>
+      <div class="col-lg-6">
+        <input class="form-control" name="description" placeholder="description" type="text">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-6 col-lg-offset-2">
+        <input type="reset" class="btn btn-default"></input>
+        <input type="submit" class="btn btn-primary"></input>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+</main>
+
+      
   </body>
 </html>

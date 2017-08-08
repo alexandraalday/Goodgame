@@ -22,6 +22,9 @@ section {
   padding-bottom: 50px;
 }
 
+main {
+	padding-top: 70px;
+}
 .separator {
   max-width: 300px;
   margin: 0 auto 15px auto;
@@ -70,11 +73,12 @@ section {
   padding: 100px 0;
 }
 
-
-
-
-
-/* portfolio styles */
+#scroll {
+	margin-top: 100px;
+	color: #fff;
+  	font-size: 5em;
+  	padding: 10px;
+}
 
 
 /* code for caption hover effects from Codrops and K. Anthony;  slightly modified*/
@@ -179,7 +183,6 @@ figure.effect-portfolio:hover p {
 /* contact styles */
 
 .social {
-
   padding: 0px;
 }
 
@@ -212,6 +215,8 @@ footer {
   margin: 1%;
   text-align: center;
 }
+
+
 
 
 
@@ -257,3 +262,4 @@ footer {
     padding: 300px 0;
   }
 }
+
