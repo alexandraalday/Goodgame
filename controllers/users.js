@@ -11,7 +11,8 @@ const router = express.Router();
 router.get('/', (req, res)=>{
 	User.find({}, (err, foundUsers)=>{
     	res.render('users/users-index.ejs', {
-      		users: foundUsers
+      		users: foundUsers,
+          currentUser: req.session.currentUser
     	});
   	});
 });
@@ -23,6 +24,25 @@ router.get('/new', (req, res)=>{
   	} else {
     	return res.send('This user already has an account. You must logout to create a new one.');
 	}
+});
+
+// seed data
+router.get('/seed', (req, res)=>{
+  User.create([
+    {
+       username: "hellionoftroy",
+       password: "p00p",
+       icon: "http://static.tumblr.com/132fe3d842522ec66aebdef5463122d6/qsi2ine/JcKnk73b0/tumblr_static_7o1ldyzud3oc4owgsw0sc08ss.gif",
+       description: "i made this"
+    }, {
+       username: "test",
+       password: "test",
+       icon: "",
+       description: "i am a test"
+    }
+  ], (err, data)=>{
+    res.redirect('/')
+  })
 });
 
 // show page
@@ -49,11 +69,14 @@ router.get('/:id/edit', (req, res)=>{
 });
 
 router.put('/:id', (req, res)=>{
-  	User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser)=>{
-    	User.findByIdAndUpdate(req.params.id, req.body, (err, foundUser)=>{
-        	res.redirect('/users/' + req.params.id);
- 		});	
-	});
+  if(req.body.icon === ""){ 
+    req.body.icon = 'http://place-hold.it/100'; // 
+  };
+  User.findById(req.params.id, (err, foundUser)=>{
+    User.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedUser)=>{
+      res.redirect('/users/' + req.params.id);
+    });
+  });
 });
 
 //	create user
@@ -97,24 +120,7 @@ router.delete('/:id', (req, res)=>{
 	});
 });
 
-// seed data
-router.get('/seed', (req, res)=>{
-	User.create([
-		{
-			 username: "hellionoftroy",
-			 password: "p00p",
-	     icon: "http://static.tumblr.com/132fe3d842522ec66aebdef5463122d6/qsi2ine/JcKnk73b0/tumblr_static_7o1ldyzud3oc4owgsw0sc08ss.gif",
-			 description: "i made this"
-		}, {
-			 username: "test",
-			 password: "test",
-	     icon: "",
-	     description: "i am a test"
-		}
-	], (err, data)=>{
-		res.redirect('/users')
-	})
-});
+
 
 
 //	EXPORT

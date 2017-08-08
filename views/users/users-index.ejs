@@ -10,9 +10,9 @@
       <% for(let i = 0; i < users.length; i++) { %>
           <li>
             <a href="/users/<%=users[i].id%>"><%=users[i].username%></a>
+            <img src="<%users[i].icon%>">
           </li>
       <% } %>
     </ul>
-    <a href="/users/new">new user</a>
   </body>
 </html>
