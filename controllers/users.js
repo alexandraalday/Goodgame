@@ -61,7 +61,8 @@ router.get('/:id/edit', (req, res)=>{
   User.findById(req.params.id, (err, foundUser)=>{
     if(req.session.currentUser.username === foundUser.username){ //user can only edit their account
       return res.render('users/users-edit.ejs', {
-        user: foundUser
+        user: foundUser,
+        currentUser: req.session.currentUser
       });
     } else {
         return res.send('you do not have permission to edit this account');

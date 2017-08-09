@@ -16,6 +16,19 @@
       </div>
     </div>
 
+<!-- begin user edit/delete buttons -->
+    <div class="col-sm-4 text-center">
+    <% if(currentUser) {%>
+        <% if(currentUser.username === user.username) {%>
+          <form action="/users/<%=user.id%>/edit">
+            <input class="btn btn-secondary" type="submit" value="Edit User"/>
+            </form>
+          <form action="/users/<%=user.id%>?_method=DELETE" method="POST">
+              <input class="btn btn-danger" type="submit" value="Delete User" />
+          </form>
+        <% } %>
+    <% } %>
+    </div>
   
     <!-- begin portfolio style section -->
     <section id="portfolio" name="portfolio">
@@ -44,15 +57,6 @@
     </div><!-- end container -->
   </section>
 
-
-    <% if(currentUser) {%>
-        <% if(currentUser.username === user.username) {%>
-          <a href="/users/<%=user.id%>/edit">edit account</a>
-          <form action="/users/<%=user.id%>?_method=DELETE" method="POST">
-              <input type="submit" value="delete account" />
-          </form>
-        <% } %>
-    <% } %>
 
   </body>
 </html>
