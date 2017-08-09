@@ -17,6 +17,7 @@ const mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/goodgam
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
+app.use(require('morgan')('dev'));
 app.use(session({
   secret: "keep it secret keep it safe",
   resave: false,
@@ -30,6 +31,9 @@ app.use('/users', userController);
 
 const gamelistController = require('./controllers/gamelists.js');
 app.use('/gamelists', gamelistController);
+
+const gamesController = require('./controllers/games.js');
+app.use('/games', gamesController);
 
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
