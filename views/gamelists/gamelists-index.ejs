@@ -6,13 +6,37 @@
   <body>
   <% include ../partials/nav.ejs %>
 
-  	<a href="/gamelists/new">make a new gamelist</a>
-    <ul>
-      <% for(let i = 0; i < gamelists.length; i++) { %>
-          <li>
-            <a href="/gamelists/<%=gamelists[i].id%>"><%=gamelists[i].coverImage%></a>
-          </li>
-      <% } %>
-    </ul>
+
+   <main style="padding-top: 70px">
+
+   <a class="btn btn-danger" href="/gamelists/new" style="float: right; margin-right: 10%">Add A Gamelist</a>
+    <!-- begin portfolio style section -->
+      <section id="portfolio" name="portfolio">
+      <div class="container">
+        <div class="row text-center">
+          <h1>GAMELISTS</h1>
+          <hr class="separator separator-dark">
+        </div>
+        <!-- end section title row -->
+        <div class="row">
+        <% for(let i = 0; i < gamelists.length; i++) { %>
+          <div class="col-md-4 portfolio-item">
+            <figure class="effect-portfolio">
+              <img class="img-responsive" src="<%=gamelists[i].coverImage%>">
+              <figcaption>
+                <h2>By: <br/>
+                <span><%=gamelists[i].author%></span></h2>
+                <p><%=gamelists[i].description%>
+                </p>
+                <a href="/gamelists/<%=gamelists[i].id%>"></a>
+              </figcaption>
+            </figure>
+          </div><!-- end column -->
+          <% } %>
+        </div><!-- end row -->
+      </div><!-- end container -->
+    </section><!-- end  portfolio section -->
+  </main>
+
   </body>
 </html>
