@@ -19,6 +19,23 @@ router.get('/', (req, res)=>{
   });
 });
 
+// seed data
+router.get('/seed', (req, res)=>{
+  Gamelist.create([
+    {
+          author: "hellionoftroy",
+          coverImage: "http://place-hold.it/500x500.png",
+          description: "i made this playlist",
+    }, 
+    {
+          author: "test",
+          coverImage: "http://place-hold.it/500x500.png",
+          description: "test",
+    }], (err, data)=>{
+    res.redirect('/')
+  })
+});
+
 // new gamelist
 router.get('/new', (req, res)=>{
   if(req.session.currentUser){ //only logged in users can crete a gamelist

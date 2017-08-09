@@ -12,6 +12,7 @@
       <%=gamelist.description%>
     </p>
     <ul>
+    <% if (gamelist.game.title.length > 0){ %>
       <% for(let i = 0; i < gamelist.game.title.length; i++){ %>
           <li>
             <%=gamelist.game.title[i]%>
@@ -21,7 +22,10 @@
               <%=gamelist.game.description[i]%>
             </p>
           </li>
-      <% } %>
+       <% } %>
+      <% } else if (gamelist.game.title.length === 0){ %>
+        <p>There are no games in this gamelist</p>
+        <% } %>
     </ul>
      <% if(currentUser) {%>
      	<% if(currentUser.username === gamelist.author) { %>

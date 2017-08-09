@@ -216,6 +216,21 @@ footer {
 }
 
 
+/*user styles*/
+#profile {
+	padding: 70px;
+}
+
+#profile-icon {
+	border-radius: 2%;
+	padding-left: 30px;
+}
+
+#profile-info {
+	display: inline-block;
+	float: left;
+}
+
 
 
 

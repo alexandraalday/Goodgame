@@ -33,14 +33,23 @@ router.get('/seed', (req, res)=>{
        username: "hellionoftroy",
        password: "p00p",
        icon: "http://static.tumblr.com/132fe3d842522ec66aebdef5463122d6/qsi2ine/JcKnk73b0/tumblr_static_7o1ldyzud3oc4owgsw0sc08ss.gif",
-       description: "i made this"
+       description: "i made this",
+       gamelists: [{
+          author: "hellionoftroy",
+          coverImage: "http://place-hold.it/500x500.png",
+          description: "i made this playlist",
+       }]
     }, {
        username: "test",
        password: "test",
        icon: "",
-       description: "i am a test"
-    }
-  ], (err, data)=>{
+       description: "i am a test",
+       gamelists: [{
+          author: "test",
+          coverImage: "http://place-hold.it/500x500.png",
+          description: "test",
+        }]
+    }], (err, data)=>{
     res.redirect('/')
   })
 });
