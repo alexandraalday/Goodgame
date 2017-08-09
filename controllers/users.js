@@ -1,6 +1,6 @@
 //	DEPENDENCIES
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/user.js');
 const Gamelist = require('../models/gamelist.js');
 const Game = require('../models/game.js');
@@ -54,15 +54,7 @@ router.get('/seed', (req, res)=>{
   })
 });
 
-// show page
-router.get('/:id', (req, res)=>{
-  User.findById(req.params.id, (err, foundUser)=>{
-    res.render('users/users-show.ejs', {
-      user: foundUser,
-      currentUser: req.session.currentUser
-    });
-  });
-});
+
 
 // edit page
 router.get('/:id/edit', (req, res)=>{
@@ -77,6 +69,17 @@ router.get('/:id/edit', (req, res)=>{
   });
 });
 
+// show page
+router.get('/:id', (req, res)=>{
+  User.findById(req.params.id, (err, foundUser)=>{
+    res.render('users/users-show.ejs', {
+      user: foundUser,
+      currentUser: req.session.currentUser
+    });
+  });
+});
+
+//edit user
 router.put('/:id', (req, res)=>{
   if(req.body.icon === ""){ 
     req.body.icon = 'http://place-hold.it/100'; // 
@@ -90,12 +93,14 @@ router.put('/:id', (req, res)=>{
 
 //	create user
 router.post('/', (req, res)=>{
-	req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+  if(req.body.password !==""){
+	 req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+  }
   	if(req.body.icon === ""){ 
     	req.body.icon = undefined; 
   	};
   	User.create(req.body, ()=>{
-   		res.redirect('/users');
+   		res.redirect('/sessions/new');
   	});
 });
 

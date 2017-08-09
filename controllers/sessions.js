@@ -1,7 +1,7 @@
 //	DEPENDENCIES
 const express = require('express');
 const User = require('../models/user.js');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const router = express.Router();
 
 // get route
