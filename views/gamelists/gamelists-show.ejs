@@ -19,7 +19,7 @@
     <div id="gamelist-buttons" class="col-sm-4 text-center">
     <% if(currentUser) {%>
         <% if(currentUser.username === gamelist.author) {%>
-          <form action="/gamelists/<%=gamelist.id%>/edit">
+          <form action="/gamelists/edit/<%=gamelist.id%>">
             <input class="btn btn-secondary" type="submit" value="Edit Gamelist"/>
             </form>
           <form action="/gamelists/<%=gamelist.id%>?_method=DELETE" method="POST">

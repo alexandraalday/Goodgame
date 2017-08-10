@@ -34,7 +34,7 @@ router.get('/new', (req, res)=>{
 });
  
 // edit gamelist
-router.get('/:id/edit', (req, res)=>{
+router.get('/edit/:id', (req, res)=>{
   Gamelist.findById(req.params.id, (err, foundGamelist)=>{
     if(req.session.currentUser){
       if(req.session.currentUser.username === foundGamelist.author) {
@@ -83,7 +83,7 @@ router.put('/:id', (req, res)=>{
 
 //add games to gameslist
 router.get('/:id/add-games', (req, res)=>{
-  Gamelist.findById(req.params.is, (err, foundPlaylist)=>{
+  Gamelist.findById(req.params.id, (err, foundGamelist)=>{
     res.render('games/games-new.ejs', {
       gamelistId: req.params.id,
       gamelist: foundGamelist,
