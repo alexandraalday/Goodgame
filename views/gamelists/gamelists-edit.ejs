@@ -6,10 +6,41 @@
   <body>
   <% include ../partials/nav.ejs %>
 
-    <form action="/gamelists/<%=gamelist.id%>?_method=PUT" method="POST">
-      <input type="text" name="coverImage" placeholder="cover image" value="<%=gamelist.coverImage%>">
-      <input type="text" name="description" placeholder="description" value="<%=gamelist.description%>">
-      <input type="submit" value="edit" />
-    </form>
+  <main style="padding-top: 70px">
+
+<!--  new user form -->
+<form class="form-horizontal" action="/gamelists/<%=gamelist.id%>?_method=PUT" method="POST">
+  <fieldset>
+    <legend class="col-lg-10 col-lg-offset-2">Edit Gamelist Info</legend>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Title</label>
+      <div class="col-lg-6">
+        <input class="form-control" name="title" value="<%=gamelist.title %>" type="text">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Cover Image</label>
+      <div class="col-lg-6">
+        <input class="form-control" name="coverImage" value="<%=gamelist.coverImage%>" type="text">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Description</label>
+      <div class="col-lg-6">
+        <input class="form-control" name="description" value="<%=gamelist.description%>" type="text">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-6 col-lg-offset-2">
+        <input type="reset" class="btn btn-default"></input>
+        <input type="submit" class="btn btn-primary"></input>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+</main>
+
   </body>
 </html>

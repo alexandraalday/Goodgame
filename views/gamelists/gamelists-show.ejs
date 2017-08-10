@@ -12,10 +12,7 @@
       <div id="gamelist-info">
         <h1><%=gamelist.title%></h1>
         <p><%=gamelist.description%></p>
-      </div>
-    </div>
-
-<!-- begin user edit/delete buttons -->
+        <!-- begin user edit/delete buttons -->
     <div class="col-sm-4 text-center">
     <% if(currentUser) {%>
         <% if(currentUser.username === user.username) {%>
@@ -28,6 +25,10 @@
         <% } %>
     <% } %>
     </div>
+      </div>
+    </div>
+
+
   
     <!-- begin portfolio style section -->
     <section id="portfolio" name="portfolio">

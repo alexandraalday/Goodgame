@@ -40,6 +40,7 @@ router.get('/:id/edit', (req, res)=>{
       if(req.session.currentUser.username === foundGamelist.author) {
         return res.render('gamelists/gamelists-edit.ejs', {
           gamelist: foundGamelist,
+          currentUser: req.session.currentUser
       });
       } else {
         res.send('you do not have permission to edit this playlist');
@@ -85,7 +86,8 @@ router.get('/:id/add-games', (req, res)=>{
   Gamelist.findById(req.params.is, (err, foundPlaylist)=>{
     res.render('games/games-new.ejs', {
       gamelistId: req.params.id,
-      gamelist: foundGamelist
+      gamelist: foundGamelist,
+      currentUser: req.session.currentUser
     });
   });
 });
@@ -141,7 +143,12 @@ router.get('/:id', (req, res)=>{
 router.post('/', (req, res)=>{
   req.body.author = req.session.currentUser.username; //curent user is listed as gamelist author
   Gamelist.create(req.body, (err, createdGamelist)=>{
-    res.redirect('/gamelists/' + createdGamelist.id + '/add-games');
+     User.findById({'username': createdGamelist.author}, (err, foundUser)=>{
+          foundUser.gamelists.push(createdGamelist);
+          foundUser.save((err, savedUser)=>{
+            res.redirect('/gamelists');
+          });
+      });
   });
 });
  

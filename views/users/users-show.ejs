@@ -17,7 +17,7 @@
     </div>
 
 <!-- begin user edit/delete buttons -->
-    <div class="col-sm-4 text-center">
+    <div id="user-buttons" class="col-sm-4 text-center">
     <% if(currentUser) {%>
         <% if(currentUser.username === user.username) {%>
           <form action="/users/<%=user.id%>/edit">
@@ -26,6 +26,7 @@
           <form action="/users/<%=user.id%>?_method=DELETE" method="POST">
               <input class="btn btn-danger" type="submit" value="Delete User" />
           </form>
+          <a class="btn btn-primary" href="/gamelists/new">Add A Gamelist</a>
         <% } %>
     <% } %>
     </div>

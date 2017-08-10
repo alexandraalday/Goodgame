@@ -124,6 +124,10 @@ figure p {
   letter-spacing: 1px;
 }
 
+.portfolio-item {
+  margin: 15px auto;
+}
+
 figure.effect-portfolio {
   background: #333;
 }
@@ -216,12 +220,13 @@ footer {
 
 /*show page styles*/
 #profile, #gamelist {
-	padding: 70px;
+	padding-left: 20%;
+  padding-top: 10%
 }
 
 #profile-icon, #gamelist-icon {
 	border-radius: 2%;
-	padding-left: 30px;
+	padding-left: 20%;
   max-height: 300px;
   width: auto;
 }
@@ -231,6 +236,10 @@ footer {
 	float: left;
 }
 
+#user-buttons {
+  display: flex;
+  margin-left: 35%;
+}
 
 
 
