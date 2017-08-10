@@ -141,16 +141,8 @@ router.get('/:id', (req, res)=>{
 //  POST ROUTE
 // create a gamelist
 router.post('/', (req, res)=>{
-  console.log(req.body);
-  console.log('/////////');
-  console.log(req.session.currentUser.username);
   req.body.username = req.session.currentUser.username; //curent user is listed as gamelist author
-    console.log('~~~~~~~~~~~');
-    console.log(req.body.username);
     Gamelist.create(req.body, (err, createdGamelist)=>{
-            console.log("============");
-            console.log(createdGamelist);
-      // User.findOne({'username': req.body.username}, (err, foundUser)=>{
           User.findOneAndUpdate(
             {username: req.body.username},
             {$push: {gamelists: createdGamelist}},
@@ -158,13 +150,7 @@ router.post('/', (req, res)=>{
             (err, model)=> {
               console.log(err);
             })
-            // console.log('++++++++');
-            // console.log(foundUser);
-            // foundUser.gamelists.push('poop');
-            // foundUser.description = "i am poopie";
-            // foundUser.save((err, savedUser)=>{
             res.redirect('/gamelists');
-          // });
       });
   });
 

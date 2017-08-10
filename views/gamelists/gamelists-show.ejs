@@ -12,23 +12,23 @@
       <div id="gamelist-info">
         <h1><%=gamelist.title%></h1>
         <p><%=gamelist.description%></p>
-        <!-- begin user edit/delete buttons -->
-    <div class="col-sm-4 text-center">
+      </div>
+    </div>
+
+      <!-- begin user edit/delete buttons -->
+    <div id="gamelist-buttons" class="col-sm-4 text-center">
     <% if(currentUser) {%>
-        <% if(currentUser.username === user.username) {%>
+        <% if(currentUser.username === gamelist.author) {%>
           <form action="/gamelists/<%=gamelist.id%>/edit">
             <input class="btn btn-secondary" type="submit" value="Edit Gamelist"/>
             </form>
           <form action="/gamelists/<%=gamelist.id%>?_method=DELETE" method="POST">
               <input class="btn btn-danger" type="submit" value="Delete Gamelist" />
           </form>
+           <a class="btn btn-primary" href="/gamelists/:id/add-games">Add A Game</a>
         <% } %>
     <% } %>
     </div>
-      </div>
-    </div>
-
-
   
     <!-- begin portfolio style section -->
     <section id="portfolio" name="portfolio">

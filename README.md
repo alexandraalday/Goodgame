@@ -15,10 +15,13 @@
   - App is sessions based so that users can only edit/delete playlists that they've made and only edit/delete their own account
  - Design:
    - HTML/CSS done with Bootstrap frameworks 
-   - App is responsive
+   - App is semi-responsive
 
 # ETC.
 **PLANNED FEATURES:** 
+- Giving users the ability to rate other users gamelists.
+- Gamelist show pages would show the average rating from site users. 
+- Will push top 6 gamelists to homepage.
 - Giving users ability to rate game titles they have played.
 - Game show pages would show the average rating from site users. 
 - Hoping to pull from Giant Bomb Api so users can search for each game and click a button to add to their gamelists. No more manual entry of games. 

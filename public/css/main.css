@@ -228,15 +228,17 @@ footer {
 	border-radius: 2%;
 	padding-left: 20%;
   max-height: 300px;
-  width: auto;
+  max-width: 500px;
 }
 
 #profile-info, #gamelist-info {
 	display: inline-block;
 	float: left;
+  max-width: 500px;
+  overflow: auto;
 }
 
-#user-buttons {
+#user-buttons, #gamelist-buttons {
   display: flex;
   margin-left: 35%;
 }
