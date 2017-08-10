@@ -200,7 +200,7 @@ figure.effect-portfolio:hover p {
   height: 50px;
 }
 
-#github, #linked-in, #twitter {
+#github, #linked-in {
   border-radius: 50%;
   border: solid 2px #ef1a28;
   font-size: 1.5em;

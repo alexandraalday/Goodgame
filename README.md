@@ -1,5 +1,5 @@
 # PROJECT: GOODGAME
-**LIVE SITE:** 
+**LIVE SITE:** http://project-goodgame.herokuapp.com/
 
 **SUMMARY:** Goodgame is an app that lets you catalog your video games into gamelists like "currently playing", "wishlist", and "played". A little like Goodreads or Spotify, but for video games. 
 

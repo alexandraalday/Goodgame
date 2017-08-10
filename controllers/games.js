@@ -1,26 +1,34 @@
-// // DEPENDENCIES
-// const express = require('express');
-// const router = express.Router();
-// const igdbURL = 'https://api-2445582011268.apicast.io/games/';
-// const apiHeaders = {
-// 			'user-key': '1acdacaf35c5fbd7b1ab4111bdbaf8ce',
-// 			'Accept': 'application/json'
-// 		};
+// DEPENDENCIES
+const express = require('express');
+const router = express.Router();
+const igdbURL = 'https://api-2445582011268.apicast.io/games/';
+const apiHeaders = {
+			'user-key': '1acdacaf35c5fbd7b1ab4111bdbaf8ce',
+			'Accept': 'application/json'
+		};
 
 
-// // manual entry game index route
+// manual entry game index route
+router.get('/new', (req, res)=>{
+	if(req.session.currentUser){
+		User.find({}, (err, foundUsers)=>{
+			res.render('games/games-new.ejs', {
+				users: foundUsers,
+       			currentUser: req.session.currentUser
+      		});
+		});
+	} else {
+      res.send('you must be logged in to add games to a gamelist');
+  }
+});
+
+
+// game search index route
 // router.get('/', (req, res)=>{
-// 	res.render('games/games-new.ejs', {
+// 	res.render('games/games-search.ejs', {
 //         currentUser: req.session.currentUser
 //       });
 // });
-
-// // game search index route
-// // router.get('/', (req, res)=>{
-// // 	res.render('games/games-search.ejs', {
-// //         currentUser: req.session.currentUser
-// //       });
-// // });
 
 
 // router.get('/game', (req, res)=>{
@@ -42,12 +50,12 @@
 // 	});
 // });
 
-// router.post('/', (req, res)=>{
-// 	res.send(req.body);
-// });
+router.post('/', (req, res)=>{
+	res.send(req.body);
+});
 
 
 
 
-// // export
-// module.exports = router;
+// export
+module.exports = router;

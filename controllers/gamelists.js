@@ -29,7 +29,7 @@ router.get('/new', (req, res)=>{
       });
     });
   } else {
-      res.send('you must be logged in to create playlists');
+      res.send('You need to be logged in to edit your gamelist');
   }
 });
  
@@ -43,7 +43,7 @@ router.get('/:id/edit', (req, res)=>{
           currentUser: req.session.currentUser
       });
       } else {
-        res.send('you do not have permission to edit this playlist');
+        res.send('Only the author can edit this gamelist');
       };
     };
   });
