@@ -70,14 +70,25 @@ router.get('/edit-games/:id', (req, res)=>{
 
 // edit gamelist info
 router.put('/:id', (req, res)=>{
-  Gamelist.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedGamelist)=>{
-      User.findOne({ 'username': req.session.currentUser }, (err, foundUser)=>{
-        foundUser.gamelists.id(req.params.id).remove(); //error says this is null, but updates the info anyways
-        foundUser.gamelists.push(updatedGamelist);
-        foundUser.save((err, savedUser)=>{
+  Gamelist.findByIdAndUpdate(req.params.id, req.body, (err, updatedGamelist)=>{
+    console.log('+++++++++++');
+    console.log(req.params.id);
+    console.log(updatedGamelist)
+       Gamelist.findOneAndUpdate(
+            {_id: req.params.id},
+            {$push: {gamelists: updatedGamelist}},
+            {safe: true, upsert: true},
+            (err, model)=>{
+              console.log(err);
+            })
+
+      // User.findOne({}, (err, foundUser)=>{
+      //   foundUser.gamelists.id(req.params.id).remove(); //error says this is null, but updates the info anyways
+      //   foundUser.gamelists.push(updatedGamelist);
+      //   foundUser.save((err, savedUser)=>{
           res.redirect('/gamelists/' + updatedGamelist.id);
-         });
-      });
+         // });
+      // });
   });
 });
 
