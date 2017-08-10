@@ -1,4 +1,4 @@
-//	DEPENDENCIES
+//  DEPENDENCIES
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/user.js');
@@ -6,24 +6,24 @@ const Gamelist = require('../models/gamelist.js');
 const Game = require('../models/game.js');
 const router = express.Router();
 
-//	GET ROUTE
+//  GET ROUTE
 // index page
 router.get('/', (req, res)=>{
-	User.find({}, (err, foundUsers)=>{
-    	res.render('users/users-index.ejs', {
-      		users: foundUsers,
+  User.find({}, (err, foundUsers)=>{
+      res.render('users/users-index.ejs', {
+          users: foundUsers,
           currentUser: req.session.currentUser
-    	});
-  	});
+      });
+    });
 });
 
 // new user page
 router.get('/new', (req, res)=>{
-	if(!req.session.currentUser) { //user must be logged out to create a new account
-    	return res.render('users/users-new.ejs');
-  	} else {
-    	return res.send('This user already has an account. You must logout to create a new one.');
-	}
+  if(!req.session.currentUser) { //user must be logged out to create a new account
+      return res.render('users/users-new.ejs');
+    } else {
+      return res.send('This user already has an account. You must logout to create a new one.');
+  }
 });
 
 // seed data
@@ -61,7 +61,7 @@ router.get('/:id/edit', (req, res)=>{
   User.findById(req.params.id, (err, foundUser)=>{
     if(req.session.currentUser.username === foundUser.username){ //user can only edit their account
       return res.render('users/users-edit.ejs', {
-        user: foundUser,
+        user: foundUser, 
         currentUser: req.session.currentUser
       });
     } else {
@@ -92,17 +92,17 @@ router.put('/:id', (req, res)=>{
   });
 });
 
-//	create user
+//  create user
 router.post('/', (req, res)=>{
   if(req.body.password !==""){
-	 req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
   }
-  	if(req.body.icon === ""){ 
-    	req.body.icon = undefined; 
-  	};
-  	User.create(req.body, ()=>{
-   		res.redirect('/sessions/new');
-  	});
+    if(req.body.icon === ""){ 
+      req.body.icon = undefined; 
+    };
+    User.create(req.body, ()=>{
+      res.redirect('/sessions/new');
+    });
 });
 
 // delete user
@@ -111,8 +111,8 @@ router.delete('/:id', (req, res)=>{
     let gamelistIds = [];
     let gameIds = [];
     for(let i = 0; i < deletedUser.gamelists.length; i++){
-    	gamelistIds.push(deletedUser.gamelists[i]._id);
-    	songIds.push(deletedUser.gamelists[i].games._id);
+      gamelistIds.push(deletedUser.gamelists[i]._id);
+      songIds.push(deletedUser.gamelists[i].games._id);
     };
     Gamelist.remove(
       {
@@ -121,22 +121,22 @@ router.delete('/:id', (req, res)=>{
         }
       },
       (err, removedGamelists)=>{
-      	Game.remove({
-      		_id: {
-      			$in: gameIds
-      		}
-      	},
-      	(err, removedGames)=>{
-        	req.session.destroy(()=>{
-           		res.redirect('/');
-          		});
-      		});
-    	});
-	});
+        Game.remove({
+          _id: {
+            $in: gameIds
+          }
+        },
+        (err, removedGames)=>{
+          req.session.destroy(()=>{
+              res.redirect('/');
+              });
+          });
+      });
+  });
 });
 
 
 
 
-//	EXPORT
+//  EXPORT
 module.exports = router;

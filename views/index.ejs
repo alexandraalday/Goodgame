@@ -10,7 +10,13 @@
 <header>
   <div class="jumbotron text-center" id="heading">
     <div class="container intro-text">
-      <h1>Hello!</h1>
+      <h1>
+      <% if(currentUser) { %>
+        HELLO <%=currentUser.username%>!
+    <% } else { %>
+        HELLO!
+    <% } %>
+    </h1>
       <hr class="separator separator-light">
       <h2>
         Come find out what games your friends are playing
