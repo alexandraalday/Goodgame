@@ -31,9 +31,6 @@ app.use('/users', userController);
 const gamelistController = require('./controllers/gamelists.js');
 app.use('/gamelists', gamelistController);
 
-const gameController = require('./controllers/games.js');
-app.use('/games', gameController);
-
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
 

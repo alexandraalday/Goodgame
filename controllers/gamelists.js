@@ -85,7 +85,6 @@ router.put('/:id', (req, res)=>{
 router.get('/:id/add-games', (req, res)=>{
   Gamelist.findById(req.params.id, (err, foundGamelist)=>{
     res.render('games/games-new.ejs', {
-      gamelistId: req.params.id,
       gamelist: foundGamelist,
       currentUser: req.session.currentUser
     });
@@ -141,13 +140,13 @@ router.get('/:id', (req, res)=>{
 //  POST ROUTE
 // create a gamelist
 router.post('/', (req, res)=>{
-  req.body.username = req.session.currentUser.username; //curent user is listed as gamelist author
+  req.body.username = req.session.currentUser.username; //current user is listed as gamelist author
     Gamelist.create(req.body, (err, createdGamelist)=>{
           User.findOneAndUpdate(
             {username: req.body.username},
             {$push: {gamelists: createdGamelist}},
             {safe: true, upsert: true},
-            (err, model)=> {
+            (err, model)=>{
               console.log(err);
             })
             res.redirect('/gamelists');
@@ -157,20 +156,38 @@ router.post('/', (req, res)=>{
  
 // games into gamelist
 router.post('/:id', (req, res)=>{
-  Game.create(req.body, (err, createdGames)=>{
-    Gamelist.findById(req.params.id, (err, foundGamelist)=>{
-      foundGamelist.games = createdGames;
-      foundGamelist.save((err, savedGamelist)=>{
-        User.findOne({'username': savedGamelist.author}, (err, foundUser)=>{
-          foundUser.gamelists.push(savedGamelist);
-          foundUser.save((err, savedUser)=>{
-            res.redirect('/gamelists');
-          });
-        });
-      });
+  Game.create(req.body, (err, createdGame)=>{
+      console.log('=============');
+      console.log(createdGame);
+      console.log('=============');
+      console.log(req.params.id);
+    Gamelist.findOneAndUpdate(
+      { _id: req.params.id},
+      {$push: {games: createdGame}},
+      {safe: true, upsert: true},
+      (err, model)=>{
+          console.log(err);
+      })
+      res.redirect('/gamelists/:id');
     });
   });
-});
+
+
+
+
+//       req.params.id, (err, foundGamelist)=>{
+//       foundGamelist.games = createdGames;
+//       foundGamelist.save((err, savedGamelist)=>{
+//         User.findOne({'username': savedGamelist.author}, (err, foundUser)=>{
+//           foundUser.gamelists.push(savedGamelist);
+//           foundUser.save((err, savedUser)=>{
+//             res.redirect('/gamelists');
+//           });
+//         });
+//       });
+//     });
+//   });
+// });
 
 // delete route
 router.delete('/:id', (req, res)=>{

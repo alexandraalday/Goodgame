@@ -1,30 +1,32 @@
+// this section is not in use currently, but is in progress for a future feature
+// users will be able to search for their game in the igdb database and add to their gamelists
+
+
 // DEPENDENCIES
-const express = require('express');
-const router = express.Router();
-const igdbURL = 'https://api-2445582011268.apicast.io/games/';
-const apiHeaders = {
-			'user-key': '1acdacaf35c5fbd7b1ab4111bdbaf8ce',
-			'Accept': 'application/json'
-		};
+// const express = require('express');
+// const router = express.Router();
+// const igdbURL = 'https://api-2445582011268.apicast.io/games/';
+// const apiHeaders = {
+// 			'user-key': '1acdacaf35c5fbd7b1ab4111bdbaf8ce',
+// 			'Accept': 'application/json'
+// 		};
 
 
 // manual entry game index route
-router.get('/new', (req, res)=>{
-	if(req.session.currentUser){
-		User.find({}, (err, foundUsers)=>{
-			res.render('games/games-new.ejs', {
-				users: foundUsers,
-       			currentUser: req.session.currentUser
-      		});
-		});
-	} else {
-      res.send('you must be logged in to add games to a gamelist');
-  }
-});
+// router.get('/new', (req, res)=>{
+// 	if(req.session.currentUser){
+// 		User.find({}, (err, foundUsers)=>{
+// 			res.render('games/games-new.ejs', {
+// 				users: foundUsers,
+//        			currentUser: req.session.currentUser
+//       		});
+// 		});
+// 	} else {
+//       res.send('you must be logged in to add games to a gamelist');
+//   }
+// });
 
 
-// this section is not in use currently, but is in progress for a future feature
-// users will be able to search for their game in the igdb database and add to their gamelists
 
 // game search index route
 // router.get('/', (req, res)=>{
@@ -53,12 +55,12 @@ router.get('/new', (req, res)=>{
 // 	});
 // });
 
-router.post('/', (req, res)=>{
-	res.send(req.body);
-});
+// router.post('/', (req, res)=>{
+// 	res.send(req.body);
+// });
 
 
 
 
 // export
-module.exports = router;
+// module.exports = router;

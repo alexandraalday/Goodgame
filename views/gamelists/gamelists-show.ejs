@@ -25,7 +25,7 @@
           <form action="/gamelists/<%=gamelist.id%>?_method=DELETE" method="POST">
               <input class="btn btn-danger" type="submit" value="Delete Gamelist" />
           </form>
-           <a class="btn btn-primary" href="/gamelists/:id/add-games">Add A Game</a>
+           <a class="btn btn-primary" href="/gamelists/<%=gamelist.id%>/add-games">Add A Game</a>
         <% } %>
     <% } %>
     </div>
