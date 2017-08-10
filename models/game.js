@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
  
 // SCHEMA 
 const gameSchema = mongoose.Schema({
-  title: { type: Array, required: true },
-  platform: { type: Array, required: true },
-  image: { type: Array, required: true },
-  description: { type: Array }
+  title: { type: String, required: true },
+  platform: { type:String, required: true },
+  image: { type: String, required: true },
+  description: { type: String }
  });
  
 const Game = mongoose.model('Game', gameSchema);

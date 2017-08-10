@@ -71,11 +71,11 @@ router.get('/edit-games/:id', (req, res)=>{
 // edit gamelist info
 router.put('/:id', (req, res)=>{
   Gamelist.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedGamelist)=>{
-      User.findOne({ 'username': updatedGamelist.author }, (err, foundUser)=>{
+      User.findOne({ 'username': req.session.currentUser }, (err, foundUser)=>{
         foundUser.gamelists.id(req.params.id).remove(); //error says this is null, but updates the info anyways
         foundUser.gamelists.push(updatedGamelist);
         foundUser.save((err, savedUser)=>{
-          res.redirect('/gamelists/' + updatedGamelist.games.id);
+          res.redirect('/gamelists/' + updatedGamelist.id);
          });
       });
   });
@@ -124,12 +124,20 @@ router.put('/:gamelistId/edit-games/:gameId', (req, res)=>{
  
 // gamelist show page
 router.get('/:id', (req, res)=>{
-  Gamelist.findById(req.params.id, (err, foundGamelist)=>{
-   User.findOne({ 'username': foundGamelist.author }, (err, foundUser)=>{
-      res.render('gamelists/gamelists-show.ejs', {
-        gamelist: foundGamelist,
-        user: foundUser,
-        currentUser: req.session.currentUser
+  Game.find({},(err, foundGames)=>{
+    console.log('+++++++++++');
+    console.log(foundGames)
+    Gamelist.findById(req.params.id, (err, foundGamelist)=>{
+      console.log('============')
+      console.log(req.params.id);
+      console.log(foundGamelist);
+      User.find({}, (err, foundUser)=>{
+        res.render('gamelists/gamelists-show.ejs', {
+          games: foundGames,
+          gamelist: foundGamelist,
+          user: foundUser,
+          currentUser: req.session.currentUser
+        });
       });
     });
   });
@@ -172,22 +180,6 @@ router.post('/:id', (req, res)=>{
     });
   });
 
-
-
-
-//       req.params.id, (err, foundGamelist)=>{
-//       foundGamelist.games = createdGames;
-//       foundGamelist.save((err, savedGamelist)=>{
-//         User.findOne({'username': savedGamelist.author}, (err, foundUser)=>{
-//           foundUser.gamelists.push(savedGamelist);
-//           foundUser.save((err, savedUser)=>{
-//             res.redirect('/gamelists');
-//           });
-//         });
-//       });
-//     });
-//   });
-// });
 
 // delete route
 router.delete('/:id', (req, res)=>{
