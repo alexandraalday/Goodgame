@@ -94,9 +94,9 @@ router.put('/:id', (req, res)=>{
 
 //  create user
 router.post('/', (req, res)=>{
-  if(req.body.password !==""){
-   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-  }
+  // if(req.body.password !==""){
+  //  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+  // }
     if(req.body.icon === ""){ 
       req.body.icon = undefined; 
     };

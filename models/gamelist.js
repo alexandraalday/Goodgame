@@ -5,8 +5,8 @@ const Game = require('./game.js');
 
 //	SCHEMA
 const gamelistSchema = mongoose.Schema({
-	title: {type: String, required: true},
-	author: {type: String, required: true},
+	title: {type: String},
+	author: {type: String},
 	coverImage: { type: String, default: 'http://place-hold.it/500x500.png' },
 	description: { type: String },
 	games: [Game.schema]

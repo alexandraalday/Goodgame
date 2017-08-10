@@ -29,7 +29,7 @@ router.get('/new', (req, res)=>{
       });
     });
   } else {
-      res.send('You need to be logged in to edit your gamelist');
+      res.send('You need to be logged in to add a gamelist');
   }
 });
  
@@ -72,10 +72,10 @@ router.get('/edit-games/:id', (req, res)=>{
 router.put('/:id', (req, res)=>{
   Gamelist.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedGamelist)=>{
       User.findOne({ 'username': updatedGamelist.author }, (err, foundUser)=>{
-        foundUser.gamelists.id(req.params.id).remove();
+        foundUser.gamelists.id(req.params.id).remove(); //error says this is null, but updates the info anyways
         foundUser.gamelists.push(updatedGamelist);
         foundUser.save((err, savedUser)=>{
-          res.redirect('/gamelists/edit-games/' + updatedGamelist.games.id);
+          res.redirect('/gamelists/' + updatedGamelist.games.id);
          });
       });
   });
@@ -141,16 +141,33 @@ router.get('/:id', (req, res)=>{
 //  POST ROUTE
 // create a gamelist
 router.post('/', (req, res)=>{
-  req.body.author = req.session.currentUser.username; //curent user is listed as gamelist author
-  Gamelist.create(req.body, (err, createdGamelist)=>{
-     User.findById({'username': createdGamelist.author}, (err, foundUser)=>{
-          foundUser.gamelists.push(createdGamelist);
-          foundUser.save((err, savedUser)=>{
+  console.log(req.body);
+  console.log('/////////');
+  console.log(req.session.currentUser.username);
+  req.body.username = req.session.currentUser.username; //curent user is listed as gamelist author
+    console.log('~~~~~~~~~~~');
+    console.log(req.body.username);
+    Gamelist.create(req.body, (err, createdGamelist)=>{
+            console.log("============");
+            console.log(createdGamelist);
+      // User.findOne({'username': req.body.username}, (err, foundUser)=>{
+          User.findOneAndUpdate(
+            {username: req.body.username},
+            {$push: {gamelists: createdGamelist}},
+            {safe: true, upsert: true},
+            (err, model)=> {
+              console.log(err);
+            })
+            // console.log('++++++++');
+            // console.log(foundUser);
+            // foundUser.gamelists.push('poop');
+            // foundUser.description = "i am poopie";
+            // foundUser.save((err, savedUser)=>{
             res.redirect('/gamelists');
-          });
+          // });
       });
   });
-});
+
  
 // games into gamelist
 router.post('/:id', (req, res)=>{

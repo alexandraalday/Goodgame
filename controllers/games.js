@@ -23,6 +23,9 @@ router.get('/new', (req, res)=>{
 });
 
 
+// this section is not in use currently, but is in progress for a future feature
+// users will be able to search for their game in the igdb database and add to their gamelists
+
 // game search index route
 // router.get('/', (req, res)=>{
 // 	res.render('games/games-search.ejs', {
