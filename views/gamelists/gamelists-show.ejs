@@ -37,15 +37,14 @@
       </div>
        <!-- end section title row -->
       <div class="row">
-      <% for(let i = 0; i < games.length; i++) { %>
+      <% for(let i = 0; i < gamelist.games.length; i++) { %>
         <div class="col-md-4 portfolio-item">
           <figure class="effect-portfolio">
-            <img class="img-responsive" src="<%=games[i].image%>">
+            <img class="img-responsive" src="<%=gamelist.games[i].image%>">
             <figcaption>
-              <h2><span><%=games[i].title%></span></h2>
-              <p><%=games[i].description%>
+              <h2><span><%=gamelist.games[i].title%></span></h2>
+              <p><%=gamelist.games[i].description%>
               </p>
-              <a href="/gamelists/<%=games[i].id%>"></a>
             </figcaption>
           </figure>
         </div><!-- end column -->

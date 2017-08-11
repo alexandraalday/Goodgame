@@ -128,12 +128,7 @@ router.put('/:gamelistId/edit-games/:gameId', (req, res)=>{
 // gamelist show page
 router.get('/:id', (req, res)=>{
   Game.find({},(err, foundGames)=>{
-    console.log('+++++++++++');
-    console.log(foundGames)
     Gamelist.findById(req.params.id, (err, foundGamelist)=>{
-      console.log('============')
-      console.log(req.params.id);
-      console.log(foundGamelist);
       User.find({}, (err, foundUser)=>{
         res.render('gamelists/gamelists-show.ejs', {
           games: foundGames,
@@ -153,7 +148,7 @@ router.get('/:id', (req, res)=>{
 router.post('/', (req, res)=>{
   req.body.username = req.session.currentUser.username; //current user is listed as gamelist author
     Gamelist.create(req.body, (err, createdGamelist)=>{
-          User.findOneAndUpdate(
+          User.findOneAndUpdate( // had to use Mongoose specific push
             {username: req.body.username},
             {$push: {gamelists: createdGamelist}},
             {safe: true, upsert: true},
@@ -172,16 +167,25 @@ router.post('/:id', (req, res)=>{
       console.log(createdGame);
       console.log('=============');
       console.log(req.params.id);
-    Gamelist.findOneAndUpdate(
+      Gamelist.findOneAndUpdate(
       { _id: req.params.id},
       {$push: {games: createdGame}},
       {safe: true, upsert: true},
       (err, model)=>{
           console.log(err);
       })
-      res.redirect('/gamelists/:id');
+      Gamelist.findOne({ 'author': req.session.currentUser.username}, (err, foundGamelist)=>{
+        console.log('============')
+        console.log(foundGamelist); //not working yet
+          res.render('gamelists/gamelists-show.ejs', { //have to render here. redirect did  not work
+            gamelist: foundGamelist,
+            currentUser: req.session.currentUser
+          });
+        });
+      });
     });
-  });
+
+
 
 
 // delete route
