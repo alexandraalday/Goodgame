@@ -1,4 +1,4 @@
-const app = angular.module("Goodgame", []);
+const app = angular.module("GoodgameApp", []);
 
 app.controller("SearchController", ['$http', function($http){
 
