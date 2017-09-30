@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html ng-app="GoodgameApp">
+<html ng-app="Goodgame">
   <head>
     <% include ../partials/head.ejs %>
   </head>
-  <body ng-controller="SearchController as searchCtrl">
+  <body ng-controller="SearchController as ctrl">
   <% include ../partials/nav.ejs %>
 
   <main style="padding-top: 70px">
-<div class="row text-center">
-        <h1>GAME SEARCH</h1>
-        <hr class="separator separator-dark">
-</div>
+    <div class="row text-center">
+            <h1>GAME SEARCH</h1>
+            <hr class="separator separator-dark">
+    </div>
 
-<form method='GET' action='/games/game'>
-	<div class='form-group'>
-		<label name='search'>Search for a game</label>
-		<input type='text' name='search' class='form-control' placeholder='Enter a game name'>
-	</div>
+  <form action="/games/search" method="POST">
+  	<div class='form-group'>
+  		<label name='search'>Search for a game</label>
+  		<input type='text' name='search' class='form-control' placeholder='Enter a game name'>
+  	</div>
 
 	<button type='submit' class='btn btn-danger'>Search</button>
+  {{searchCtrl.data.game.name}}
 </form>
 </main>
 </body>

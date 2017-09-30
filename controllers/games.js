@@ -3,64 +3,42 @@
 
 
 // DEPENDENCIES
-// const express = require('express');
-// const router = express.Router();
-// const igdbURL = 'https://api-2445582011268.apicast.io/games/';
-// const apiHeaders = {
-// 			'user-key': '1acdacaf35c5fbd7b1ab4111bdbaf8ce',
-// 			'Accept': 'application/json'
-// 		};
-
-
-// manual entry game index route
-// router.get('/new', (req, res)=>{
-// 	if(req.session.currentUser){
-// 		User.find({}, (err, foundUsers)=>{
-// 			res.render('games/games-new.ejs', {
-// 				users: foundUsers,
-//        			currentUser: req.session.currentUser
-//       		});
-// 		});
-// 	} else {
-//       res.send('you must be logged in to add games to a gamelist');
-//   }
-// });
-
+const express = require('express');
+const router = express.Router();
+const request = require('request');
+const unirest = require('unirest');
 
 
 // game search index route
-// router.get('/', (req, res)=>{
-// 	res.render('games/games-search.ejs', {
-//         currentUser: req.session.currentUser
-//       });
-// });
+router.get('/', (req, res)=>{
+	res.render('games/games-search.ejs', {
+        currentUser: req.session.currentUser
+      });
+});
 
 
-// router.get('/game', (req, res)=>{
-// 	let s = req.query.search;
-// 	request({ 
-// 		headers: apiHeaders,
-// 		url: igdbURL,
-// 		qs: {
-// 			fields: 'name, cover, url',
-// 			search: s
-// 		}
-// 	}, (err, res, body)=>{
-// 		if (!err && res.statusCode == 200) {
-// 			let gameData = JSON.parse(body);
-// 			res.send(gameData);
-// 		} else {
-// 			res.redirect('/games')
-// 		}
-// 	});
-// });
-
-// router.post('/', (req, res)=>{
-// 	res.send(req.body);
-// });
-
+router.post('/search', (req, res)=>{
+    if(req.body.search === undefined || "") {    //check for empty string and send back error to avoid empty API calls
+        console.log('Empty String received');
+        var errorResponse = "Not Found";
+        res.send(errorResponse);
+    } else {
+        unirest.get("https://api-2445582011268.apicast.io/games/?fields=name,summary,cover&limit=20&offset=0&search=" + req.body.search)
+            .header("user-key", "1acdacaf35c5fbd7b1ab4111bdbaf8ce")
+            .header("Accept", "application/json")
+            .end((result)=>{
+                console.log(result.status, result.body);
+                if (result.body.length === 0) {   //check for empty array meaning no search results
+                    result.body = "Not Found";
+                    res.send(result.body);
+                } else {
+                    res.send(result.body);   //send back list of games that match search term
+                }
+            });
+    }
+});
 
 
 
 // export
-// module.exports = router;
+module.exports = router;

@@ -5,7 +5,9 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const bcrypt = require('bcrypt-nodejs');
+const unirest = require('unirest');
 const app = express();
+require('dotenv').config();
 
 
 //	ENVIRONMENT (for heroku) 
@@ -15,6 +17,7 @@ const mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/goodgam
 
 //	MIDDLEWARE
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.use(session({
@@ -22,7 +25,12 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
 
 //	CONTROLLERS
 const userController = require('./controllers/users.js');
@@ -33,6 +41,9 @@ app.use('/gamelists', gamelistController);
 
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
+
+const gamesController = require('./controllers/games.js');
+app.use('/games', gamesController);
 
 
 //	INDEX ROUTE
