@@ -12,14 +12,14 @@
             <hr class="separator separator-dark">
     </div>
 
-  <form action="/games/search" method="POST">
+  <form ng-submit="ctrl.find()">
   	<div class='form-group'>
   		<label name='search'>Search for a game</label>
-  		<input type='text' name='search' class='form-control' placeholder='Enter a game name'>
+  		<input type='text' ng-model="searchTerm" name='search' class='form-control' placeholder='Enter a game name'>
   	</div>
 
 	<button type='submit' class='btn btn-danger'>Search</button>
-  {{searchCtrl.data.game.name}}
+  {{ctrl.data.game.name}}
 </form>
 </main>
 </body>

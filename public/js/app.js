@@ -3,25 +3,19 @@ console.log('loaded bro');
 const app = angular.module("Goodgame", []);
 
 app.controller("SearchController", ['$http', function($http){
+	let searchResults = [];                      //This holds list of games from search
+    
+    this.find = function(searchTerm) {   //This function makes request from user input
+        return $http ({
+            method: 'POST',
+            url: '/games/search',
+            data: {search: searchTerm}
+        }).then(function(response) {
+            searchResults = response.data;
+            return response;
+            console.log(response);
+        })
+    };
 
-this.find = function(){
-	const controller = this;
-	$http({
-		method: "GET",
-		url: "https://api-2445582011268.apicast.io/games/search",
-		headers: {
-			Accept: "application/json",
-			"user-key": "1acdacaf35c5fbd7b1ab4111bdbaf8ce"
-		}
-	}).then(
-		function(response){
-			console.log(response.data); 
-			controller.data = response.data 
-	}, 
-		function(err){
-			console.log(err);
-		}
-	)
-	}
 
 }]);
