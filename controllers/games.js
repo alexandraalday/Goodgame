@@ -27,18 +27,17 @@ router.get('/', (req, res)=>{
 
 
 router.get('/searchResult', function(req, res) {
-  let s = req.body.search;
+  let s = req.body.searchTerm;
   request({ 
     headers: apiHeaders,
     url: igdbURL,
     qs: {
       fields: 'name,cover,summary',
-      search: s
+      search: s,
     }
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       let gameData = JSON.parse(body);
-      console.log(gameData);
       res.send(gameData);
      //  res.render('games/games-search.ejs', {
      //    gameData: gameData,
