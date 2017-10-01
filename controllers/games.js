@@ -7,7 +7,16 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 const unirest = require('unirest');
+const User = require('../models/user.js');
+const Gamelist = require('../models/gamelist.js');
+const Game = require('../models/game.js');
+require('dotenv').config();
 
+let apiHeaders = {
+      'user-key': process.env.API_KEY,
+      'Accept': 'application/json',
+    };
+let igdbURL = 'https://api-2445582011268.apicast.io/games/'
 
 // game search index route
 router.get('/', (req, res)=>{
@@ -17,25 +26,28 @@ router.get('/', (req, res)=>{
 });
 
 
-router.post('/search', (req, res)=>{
-    if(req.body.search === undefined || "") {    //check for empty string and send back error to avoid empty API calls
-        console.log('Empty String received');
-        var errorResponse = "Not Found";
-        res.send(errorResponse);
-    } else {
-        unirest.get("https://api-2445582011268.apicast.io/games/?fields=name,summary,cover&limit=20&offset=0&search=" + req.body.search)
-            .header("user-key", "1acdacaf35c5fbd7b1ab4111bdbaf8ce")
-            .header("Accept", "application/json")
-            .end((result)=>{
-                console.log(result.status, result.body);
-                if (result.body.length === 0) {   //check for empty array meaning no search results
-                    result.body = "Not Found";
-                    res.send(result.body);
-                } else {
-                    res.send(result.body);   //send back list of games that match search term
-                }
-            });
+router.get('/searchResult', function(req, res) {
+  let s = req.body.search;
+  request({ 
+    headers: apiHeaders,
+    url: igdbURL,
+    qs: {
+      fields: 'name,cover,summary',
+      search: s
     }
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      let gameData = JSON.parse(body);
+      console.log(gameData);
+      res.send(gameData);
+     //  res.render('games/games-search.ejs', {
+     //    gameData: gameData,
+     //    currentUser: req.session.currentUser
+     // });
+    } else {
+      res.redirect('/search');
+    }
+  });
 });
 
 

@@ -21,14 +21,15 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.use(session({
-  secret: "keep it secret keep it safe",
-  resave: false,
-  saveUninitialized: false
+	secret: process.env.SECRET,
+	resave: false,
+	saveUninitialized: false
 }));
 app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 
