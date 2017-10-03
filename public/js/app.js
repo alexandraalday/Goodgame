@@ -15,14 +15,15 @@ const app = angular.module("Goodgame", []);
 		this.url = 'http://localhost:3000'
 		this.searchResults = [];     //This holds list of games from search
 	    
-	    this.find = function(searchTerm) {   //This function makes request from user input
+	    this.find = function(searchData) {   //This function makes request from user input
+	    	console.log(searchData)
 	        $http ({
 	            method: 'GET',
 	            url: this.url + '/games/searchResult',
-	            data: {search: searchTerm}
+	            data: {search: searchData}
 	        }).then(function(response) {
 	            controller.searchResults = response.data;
-	            console.log(this.searchResults);
+	            console.log(controller.searchResults);
 	        })
 	    };
 

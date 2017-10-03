@@ -18,6 +18,9 @@ let apiHeaders = {
     };
 let igdbURL = 'https://api-2445582011268.apicast.io/games/'
 
+
+
+
 // game search index route
 router.get('/', (req, res)=>{
 	res.render('games/games-search.ejs', {
@@ -27,13 +30,15 @@ router.get('/', (req, res)=>{
 
 
 router.get('/searchResult', function(req, res) {
-  let s = req.body.searchTerm;
+  let s = req.query.search;
   request({ 
     headers: apiHeaders,
     url: igdbURL,
     qs: {
       fields: 'name,cover,summary',
       search: s,
+      limit: '20',
+      offset: '0'
     }
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {

@@ -12,10 +12,10 @@
             <hr class="separator separator-dark">
     </div>
 
-  <form ng-submit="ctrl.find()">
+  <form ng-submit="ctrl.find(searchTerm)">
   	<div class='form-group'>
   		<label>Search for a game</label>
-  		<input type='text' ng-model="searchTerm" name='search' class='form-control' placeholder='Enter a game name'>
+  		<input type='text' ng-model="searchTerm" name='searchTerm' class='form-control' placeholder='Enter a game name'>
   	</div>
 
 	<button type='submit' class='btn btn-danger'>Search</button>
