@@ -16,7 +16,7 @@ if (!gameData.screenshots) {
 	gameData.screenshots = [{cloudinary_id: 'blank'}];
 }
 if (!gameData.videos) {
-	gameData.videos = [{standbyVideo: 'Hey yeah'},{video_id: 'ZZ5LpwO-An4'}];
+	gameData.videos = [{standbyVideo: 'blank'}];
 }
 %>
 
@@ -51,7 +51,6 @@ if (!gameData.videos) {
   
 <div class="content">
   <div class="slider">
-    <div>
 		<% gameData.screenshots.forEach(function(screenshot) { %>
 		   <div class="image">
 			<div>
@@ -67,14 +66,8 @@ if (!gameData.videos) {
 			</div>
 			</div>
 		<% }) %>
-    </div>
-  </div> <!-- end slider -->
-  <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-    <span class="slider__label sr-only">
   </div>
-  </span>
-</div> <!-- end content -->
-
+</div> 
 
 
 
