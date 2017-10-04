@@ -272,6 +272,10 @@ footer {
   margin: 30px auto 50px;
 }
 
+.slick-prev:before, .slick-next:before {
+  color: #000000;
+}
+
 .image {
   padding: 10px;
 }
