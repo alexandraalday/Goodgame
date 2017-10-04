@@ -29,8 +29,8 @@ router.get('/', (req, res)=>{
 });
 
 
-router.get('/searchResult', function(req, res) {
-  let s = req.query.search;
+router.get('/searchResult/:search', function(req, res) {
+  let s = req.params.search;
   request({ 
     headers: apiHeaders,
     url: igdbURL,

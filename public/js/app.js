@@ -19,8 +19,7 @@ const app = angular.module("Goodgame", []);
 	    	console.log(searchData)
 	        $http ({
 	            method: 'GET',
-	            url: this.url + '/games/searchResult',
-	            data: {search: searchData}
+	            url: this.url + '/games/searchResult/:' + searchData
 	        }).then(function(response) {
 	            controller.searchResults = response.data;
 	            console.log(controller.searchResults);
