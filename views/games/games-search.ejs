@@ -30,19 +30,19 @@
         <th></th>
         <th>Game</th>
         <th>Summary</th>
-        <th>Add</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="game in ctrl.searchResults">
         <td><img src="{{ game.cover.url }}"></td>
-        <td>{{ game.name }}</td>
+        <td><a href='/games/{{game.id}}'>{{ game.name }}</a></td>
         <td>{{ game.summary }}</td>
-        <td><a href="#"><i id="like" class="fa fa-heart-o" title="Add to My Games" aria-hidden="true" ng-click="ctrl.addGame(game)"></i></a></td>
       </tr>
     </tbody>
   </table>
   </div>
+
+
 
 
 </body>

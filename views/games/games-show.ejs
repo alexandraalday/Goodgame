@@ -1,1 +1,85 @@
-Game Info Here?
+<!DOCTYPE html>
+<html ng-app="Goodgame">
+  <head>
+    <% include ../partials/head.ejs %>
+  </head>
+  <body ng-controller="SearchController as ctrl">
+  	<% include ../partials/nav.ejs %>
+
+  <main style="padding-top: 70px">
+<% 
+let imageURL = 'https://images.igdb.com/igdb/image/upload/'
+let coverURL = 't_logo_med/'
+let hugeURL = 't_screenshot_huge/'
+let medURL = 't_screenshot_med/'
+if (!gameData.screenshots) {
+	gameData.screenshots = [{cloudinary_id: 'blank'}];
+}
+if (!gameData.videos) {
+	gameData.videos = [{standbyVideo: 'Hey yeah'},{video_id: 'ZZ5LpwO-An4'}];
+}
+%>
+
+
+<% console.log(gameData.screenshots) %>
+<div class='parallax-window coolBackground' data-parallax='scroll' data-image-src='<%= imageURL + hugeURL + gameData.screenshots[0].cloudinary_id%>'>
+	<h1 class='gameTitle'><%= gameData.name %></h1>
+	<img src='<%= imageURL + coverURL + gameData.cover.cloudinary_id %>' class='singleCoverImg'>
+</div>
+	
+
+<div>
+	<% if(currentUser) { %>
+		<form method='POST' action='/search/add'>
+			<input type='hidden' name='gameId' value='<%= gameData.id %>'>
+			<button type='submit' class='btn btn-primary gradient'>Add to Library</button>
+		</form>
+	<% } %>
+</div>
+
+<div class='row'>
+	<h3 class='col-xs-offset-1 col-xs-11'>Summary</h3>
+	<div class='col-xs-offset-1 col-xs-10'>
+		<%if (gameData.summary) { %>
+			<p><%= gameData.summary %></p>
+		<% } else { %>
+			<p>no game plot available</p>
+		<% }; %>
+	</div>
+</div>
+
+  
+<div class="content">
+  <div class="slider">
+    <div>
+		<% gameData.screenshots.forEach(function(screenshot) { %>
+		   <div class="image">
+			<div>
+				<img src='<%= imageURL + medURL + screenshot.cloudinary_id %>'>
+			</div>
+		</div>
+		<% }) %>
+
+		<% gameData.videos.forEach(function(video) { %>
+		   <div class="image">
+			<div>
+				<iframe width="520" height="315" src="https://www.youtube.com/embed/<%=video.video_id %>"></iframe>
+			</div>
+			</div>
+		<% }) %>
+    </div>
+  </div> <!-- end slider -->
+  <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+    <span class="slider__label sr-only">
+  </div>
+  </span>
+</div> <!-- end content -->
+
+
+
+
+</main>
+</body>
+</html>
+
+

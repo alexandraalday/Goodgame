@@ -14,7 +14,7 @@ require('dotenv').config();
 
 let apiHeaders = {
       'user-key': process.env.API_KEY,
-      'Accept': 'application/json',
+      'Accept': 'application/json'
     };
 let igdbURL = 'https://api-2445582011268.apicast.io/games/'
 
@@ -28,7 +28,7 @@ router.get('/', (req, res)=>{
       });
 });
 
-
+// search IGDB by keyword
 router.get('/searchResult/:search', function(req, res) {
   let s = req.params.search;
   request({ 
@@ -44,16 +44,33 @@ router.get('/searchResult/:search', function(req, res) {
     if (!error && response.statusCode == 200) {
       let gameData = JSON.parse(body);
       res.send(gameData);
-     //  res.render('games/games-search.ejs', {
-     //    gameData: gameData,
-     //    currentUser: req.session.currentUser
-     // });
     } else {
       res.redirect('/search');
     }
   });
 });
 
+
+// individual game data
+router.get('/:id', function(req, res) {
+  var gameId = req.params.id;
+  request({
+    headers: apiHeaders,
+    url: igdbURL + gameId,
+    qs: {fields: 'name,cover,screenshots,summary,videos'}
+  }, function(error, response, body) {
+    if(!error && response.statusCode == 200) {
+      console.log(response)
+      let gameData = JSON.parse(body)[0];
+      res.render('games/games-show.ejs', {
+        gameData: gameData,
+        currentUser: req.session.currentUser
+      });      
+    } else {
+      res.redirect('/search');
+    }
+  })
+});
 
 
 // export

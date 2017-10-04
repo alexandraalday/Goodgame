@@ -26,5 +26,4 @@ const app = angular.module("Goodgame", []);
 	        })
 	    };
 
-
 }]);
