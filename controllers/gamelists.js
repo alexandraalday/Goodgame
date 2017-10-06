@@ -169,15 +169,15 @@ router.post('/:id', (req, res)=>{
       console.log(req.params.id);
       Gamelist.findOneAndUpdate(
       { _id: req.params.id},
-      {$push: {games: createdGame}},
+      {$push: {games: createdGame}}, // replace createdGame with gameId from games-show.ejs page. 
       {safe: true, upsert: true},
       (err, model)=>{
           console.log(err);
       })
       Gamelist.findOne({ 'author': req.session.currentUser.username}, (err, foundGamelist)=>{
         console.log('============')
-        console.log(foundGamelist); //not working yet
-          res.render('gamelists/gamelists-show.ejs', { //have to render here. redirect did  not work
+        console.log(foundGamelist); // not working yet
+          res.render('gamelists/gamelists-show.ejs', { // have to render here. redirect did  not work
             gamelist: foundGamelist,
             currentUser: req.session.currentUser
           });

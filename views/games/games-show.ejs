@@ -28,10 +28,23 @@ if (!gameData.videos) {
 		<form method='POST' action='/games/add'>
 			<input type='hidden' name='gameId' value='<%= gameData.id %>'>
 			<button id="addGameButton" type='submit' class='btn btn-danger'>Add to A List</button>
+			<!-- list all gamelists for current user on button click -->
+			<% if(currentUser) {%>
+			      <% for(let i = 0; i < currentUser.gamelists.length; i++) { %>
+			              <a href="#"><p><%=currentUser.gamelists[i].title%></p></a>
+			        <% } %>
+			    <% } %>
+			<!--  on gamelist selected (clicked) send route to add game to gamelist
+			 code here -->
+			 <input type='hidden' name='gamelistId' value='<%= currentUser.gamelists.id %>'>
+		<!-- 	 POST to games/add or POST to gamelists/game/:id  -->
+
 		</form>
 	<% } %>
 	</div>
 </div>
+
+
 
 
 <div class='row detail'>
