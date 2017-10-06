@@ -264,9 +264,14 @@ img.parallax-slider {
 
 .gameTitle {
   padding-top: 250px;
-  font-size: 5em;
+  font-size: 4em;
   color: white;
   margin-left: -100px;
+}
+
+#addGameButton {
+  padding: 10px 90px;
+  margin-top: 25px;
 }
 
 .singleCoverImg {
@@ -275,15 +280,19 @@ img.parallax-slider {
   position: relative;
 }
 
+.detail {
+  margin-top: 10px;
+}
+
 .content {
   margin: auto;
-  padding: 20px;
-  width: 600px;
+  width: 95%;
 }
 
 .slider {
   margin: 30px auto 50px;
 }
+
 
 .slick-prev:before, .slick-next:before {
   color: #000000;
@@ -292,12 +301,6 @@ img.parallax-slider {
 .image {
   padding: 10px;
 }
-
-/*img {
-  border: 5px solid #FFF;
-  display: block;
-  width: 100%;
-}*/
 
 .sr-only {
   position: absolute;

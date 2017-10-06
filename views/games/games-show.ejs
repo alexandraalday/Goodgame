@@ -23,31 +23,30 @@ if (!gameData.videos) {
 <div class='parallax-window gameBackground' data-parallax='scroll' data-image-src='<%= imageURL + hugeURL + gameData.screenshots[0].cloudinary_id%>'>
 	<h1 class='gameTitle'><%= gameData.name %></h1>
 	<img class='singleCoverImg' src='<%= imageURL + coverURL + gameData.cover.cloudinary_id %>'>
-</div>
-
-
-
-<div>
+	<div class='col-xs-11'>
 	<% if(currentUser) { %>
-		<form method='POST' action='/search/add'>
+		<form method='POST' action='/games/add'>
 			<input type='hidden' name='gameId' value='<%= gameData.id %>'>
-			<button type='submit' class='btn btn-primary'>Add to A List</button>
+			<button id="addGameButton" type='submit' class='btn btn-danger'>Add to A List</button>
 		</form>
 	<% } %>
+	</div>
 </div>
 
-<div class='row'>
-	<h3 class='col-xs-offset-4 col-xs-8'>Summary</h3>
+
+<div class='row detail'>
 	<div class='col-xs-offset-4 col-xs-6'>
 		<%if (gameData.summary) { %>
 			<p><%= gameData.summary %></p>
 		<% } else { %>
 			<p>no game plot available</p>
 		<% }; %>
+		<p><%= gameData.storyline %></p>
 	</div>
-</div>
 
+</div>
   
+
 <div class="content">
   <div class="slider">
 		<% gameData.screenshots.forEach(function(screenshot) { %>

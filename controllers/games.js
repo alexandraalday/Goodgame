@@ -57,7 +57,7 @@ router.get('/:id', function(req, res) {
   request({
     headers: apiHeaders,
     url: igdbURL + gameId,
-    qs: {fields: 'name,cover,screenshots,summary,videos'}
+    qs: {fields: 'name,cover,screenshots,summary,videos,genres,storyline'}
   }, function(error, response, body) {
     if(!error && response.statusCode == 200) {
       console.log(response)
