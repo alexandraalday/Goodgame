@@ -245,7 +245,6 @@ footer {
 
 
 
-
 .gameBackground {
   display: flex;
   align-items: center;
@@ -255,15 +254,24 @@ footer {
   width: 100%;
 }
 
+img.parallax-slider {
+  -webkit-filter: blur(7px);
+  -moz-filter: blur(7px);
+  -o-filter: blur(7px);
+  -ms-filter: blur(7px);
+  filter: blur(7px);
+}
+
 .gameTitle {
-  padding-top: 200px;
-  font-size: 4em;
+  padding-top: 250px;
+  font-size: 5em;
   color: white;
+  margin-left: -100px;
 }
 
 .singleCoverImg {
   align-self: baseline;
-  margin-left: 50px;
+  margin-left: 5%;
   position: relative;
 }
 
