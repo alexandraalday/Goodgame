@@ -7,10 +7,12 @@
   <% include ../partials/nav.ejs %>
 
   <main style="padding-top: 70px">
-    <div class="row text-center">
-            <h1>GAME SEARCH</h1>
-            <hr class="separator separator-dark">
-    </div>
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row text-center">
+              <h1>GAME SEARCH</h1>
+              <hr class="separator separator-dark">
+      </div>
+
 
   <form ng-submit="ctrl.find(searchTerm)">
   	<div class='form-group'>
@@ -20,10 +22,11 @@
 
 	<button type='submit' class='btn btn-danger'>Search</button>
   </form>
-  </main>
+  </div>
+</main>
 
     <!-- game results -->
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-10 col-md-offset-1">
   <table class="table table-hover">
     <thead>
       <tr>
