@@ -274,6 +274,11 @@ img.parallax-slider {
   margin-top: 25px;
 }
 
+#gamelistPsuedoButton {
+   padding: 10px 90px;
+   borer: none;
+}
+
 .singleCoverImg {
   align-self: baseline;
   margin-left: 5%;
@@ -290,7 +295,7 @@ img.parallax-slider {
 }
 
 .slider {
-  margin: 30px auto 50px;
+  margin: 100px auto 50px;
 }
 
 

@@ -53,7 +53,7 @@ router.get('/searchResult/:search', function(req, res) {
 
 // individual game data
 router.get('/:id', function(req, res) {
-  var gameId = req.params.id;
+  let gameId = req.params.id;
   request({
     headers: apiHeaders,
     url: igdbURL + gameId,
@@ -71,6 +71,64 @@ router.get('/:id', function(req, res) {
     }
   })
 });
+
+// /POST, add game to gamelist
+router.post('/add', function(req, res) {
+  let gameId = req.body.gameId;
+  let gamelistId = req.body.gamelistId;
+
+  console.log("-------------");
+  console.log(req.body.gameId);
+  console.log("=============");
+  console.log(req.body.gamelistId);
+
+
+  if (currentUser) { //switch to find gamelist
+    db.user.find({
+      where: {username: currentUser.username}
+    })
+    .then(function(user) {
+      request({
+        headers: apiHeaders,
+        url: igdbURL + gameId,
+        qs: {
+          fields: 'name,cover'
+        }
+      }, function(error, response, body) {
+        if(!error && response.statusCode == 200) {
+          let gameData = JSON.parse(body)[0];
+          db.game.findOrCreate({  //create new game in gamelist
+            where: {
+              title: gameData.name,
+              gamelistId: gamelistId
+            },
+            defaults: {
+              igdbId: gameData.id,
+              gamelistId: gamelistId,
+              title: gameData.name,
+              cover: gameData.cover.cloudinary_id
+            }
+          })
+          .spread(function(game, wasAdded) {
+            if (wasAdded) { 
+              req.flash('success', 'Game added to your library');           
+              res.redirect('/');
+            } else {
+              req.flash('error', 'Game already in your library');
+              res.redirect('/');
+            }
+          });
+        } else {
+          res.redirect('/');
+        }
+      })
+      
+    })
+  }
+
+})
+
+
 
 
 // export

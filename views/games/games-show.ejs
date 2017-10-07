@@ -23,24 +23,30 @@ if (!gameData.videos) {
 <div class='parallax-window gameBackground' data-parallax='scroll' data-image-src='<%= imageURL + hugeURL + gameData.screenshots[0].cloudinary_id%>'>
 	<h1 class='gameTitle'><%= gameData.name %></h1>
 	<img class='singleCoverImg' src='<%= imageURL + coverURL + gameData.cover.cloudinary_id %>'>
+	
+	<!-- add game to gamelist section -->
 	<div class='col-xs-11'>
-	<% if(currentUser) { %>
-		<form method='POST' action='/games/add'>
-			<input type='hidden' name='gameId' value='<%= gameData.id %>'>
-			<button id="addGameButton" type='submit' class='btn btn-danger'>Add to A List</button>
-			<!-- list all gamelists for current user on button click -->
-			<% if(currentUser) {%>
-			      <% for(let i = 0; i < currentUser.gamelists.length; i++) { %>
-			              <a href="#"><p><%=currentUser.gamelists[i].title%></p></a>
-			        <% } %>
-			    <% } %>
-			<!--  on gamelist selected (clicked) send route to add game to gamelist
-			 code here -->
-			 <input type='hidden' name='gamelistId' value='<%= currentUser.gamelists.id %>'>
-		<!-- 	 POST to games/add or POST to gamelists/game/:id  -->
+		<% if(currentUser) { %>
+			<form method='POST' action='/games/add'>
+				<input type='hidden' name='gameId' value='<%= gameData.id %>'>
 
-		</form>
-	<% } %>
+			<!-- add game to gamelist button -->
+			<div class="dropdown">
+			  	<button id="addGameButton" class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Add to A List
+			  		<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+
+			  		<!-- list all gamelists for current user on button click -->
+			  		<% if(currentUser) {%>
+			      		<% for(let i = 0; i < currentUser.gamelists.length; i++) { %>
+			            	<li><input type='hidden' name='gamelistId' value='<%= currentUser.gamelists[i].id %>'><button id="gamelistPsuedoButton" type="submit"><%=currentUser.gamelists[i].title%></button></li>     
+			        	<% } %>
+					<% } %>
+		  		</ul>
+			 </div>
+			</form>
+		<% } %>
 	</div>
 </div>
 
