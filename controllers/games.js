@@ -82,12 +82,11 @@ router.post('/add', function(req, res) {
   console.log("=============");
   console.log(req.body.gamelistId);
 
-
-  if (currentUser) { //switch to find gamelist
-    db.user.find({
-      where: {username: currentUser.username}
+    Gamelist.findById(req.body.gamelistId, (err, foundGamelist)=>{
+      console.log("-------------");
+      console.log("gamelist found");
     })
-    .then(function(user) {
+    .then(function(gamelist) {
       request({
         headers: apiHeaders,
         url: igdbURL + gameId,
@@ -97,19 +96,15 @@ router.post('/add', function(req, res) {
       }, function(error, response, body) {
         if(!error && response.statusCode == 200) {
           let gameData = JSON.parse(body)[0];
-          db.game.findOrCreate({  //create new game in gamelist
-            where: {
-              title: gameData.name,
-              gamelistId: gamelistId
-            },
-            defaults: {
+          console.log("=============");
+          console.log(gameData);
+          Game.create({  
               igdbId: gameData.id,
               gamelistId: gamelistId,
               title: gameData.name,
               cover: gameData.cover.cloudinary_id
-            }
           })
-          .spread(function(game, wasAdded) {
+          .then(function(game, wasAdded) {
             if (wasAdded) { 
               req.flash('success', 'Game added to your library');           
               res.redirect('/');
@@ -124,7 +119,7 @@ router.post('/add', function(req, res) {
       })
       
     })
-  }
+
 
 })
 

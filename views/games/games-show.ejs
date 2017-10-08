@@ -40,7 +40,7 @@ if (!gameData.videos) {
 			  		<!-- list all gamelists for current user on button click -->
 			  		<% if(currentUser) {%>
 			      		<% for(let i = 0; i < currentUser.gamelists.length; i++) { %>
-			            	<li><input type='hidden' name='gamelistId' value='<%= currentUser.gamelists[i].id %>'><button id="gamelistPsuedoButton" type="submit"><%=currentUser.gamelists[i].title%></button></li>     
+			            	<li><input type='hidden' name='gamelistId' value='<%= currentUser.gamelists[i]._id %>'><button id="gamelistPsuedoButton" type="submit"><%=currentUser.gamelists[i].title%></button></li>     
 			        	<% } %>
 					<% } %>
 		  		</ul>
