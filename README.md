@@ -33,7 +33,7 @@ Originally, this app only consumed its own API and users had to manually enter a
 * Slick
 * Parallax
 
-**User Stories:** 
+### User Stories: 
 The user profile of this application is twofold:
 
 First, general users of this application are people who wish to view other users' gamelists.
@@ -53,7 +53,7 @@ Another user of this application is the registered user who logs in to maintain 
 * Registered users can delete games and gamelists
 
 
-**Features In Progress:** 
+### Features In Progress:
  - [ ]  I would like to give registered users the ability to rate another user's gamelists
  - [ ]  When users view a gamelists, the average rating from site users is displayed
  - [ ]  I would then use this rating to display the top 6 rated games on the homepage
