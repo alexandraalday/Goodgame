@@ -269,6 +269,13 @@ figure.effect-portfolio:hover p {
   padding: 10px;
 }
 
+#github:hover, #linked-in:hover,
+#github:active, #linked-in:active {
+  color: #fff;
+  background: #ef1a28;
+  border: solid 2px #fff;
+}
+
 
 
 /*footer styles*/
@@ -410,6 +417,13 @@ img.parallax-slider {
   border: solid 2px #fff;
   font-size: 1em;
   padding: 10px;
+}
+
+#footer #github:hover, #footer #linked-in:hover,
+#footer #github:active, #footer #linked-in:active {
+  color: #ef1a28;
+  background: #fff;
+  border: solid 2px #ef1a28;
 }
 
 /****** Media Queries *****/
