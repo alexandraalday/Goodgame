@@ -5,6 +5,7 @@ body {
 
 body {
   font-family: 'Lato', sans-serif;
+  margin: 0;
 }
 
 h1,
@@ -273,7 +274,6 @@ figure.effect-portfolio:hover p {
 
 footer { 
   font-weight: bold; 
-  margin: 1%;
   text-align: center;
 }
 
@@ -378,6 +378,38 @@ img.parallax-slider {
   border: 0;
 }
 
+#footer {
+  font-size: 1.5em;
+  background: #ef1a28;
+  color: #fff;
+  margin: 0;
+  width: 100%;
+}
+
+#madewithlove {
+   background: #ef1a28;
+   color: #fff;
+}
+
+#footer .social li {
+  list-style: none;
+  display: inline-block;
+  margin: 10px;
+}
+
+#footer .social li a {
+  display: inline-block;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+}
+
+#footer #github, #footer #linked-in {
+  border-radius: 50%;
+  border: solid 2px #fff;
+  font-size: 1em;
+  padding: 10px;
+}
 
 /****** Media Queries *****/
 
@@ -394,7 +426,7 @@ img.parallax-slider {
   .brandIcon {
     max-height: 48px;
   }
-.navbar-brand {
+  .navbar-brand {
     font-size: 1em;
     margin-top: 2%;
   }
