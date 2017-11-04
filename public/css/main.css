@@ -104,6 +104,7 @@ section {
   background: transparent;
   min-height: 100%;
   position: relative;
+  margin-top: 5%;
 }
 
  /* code to apply filter to background from stackoverflow.com */
@@ -447,6 +448,9 @@ img.parallax-slider {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 950px) {
+  #navbar {
+    font-size: 0.75em;
+  }
   .intro-text {
     color: #fff;
     padding: 200px 0;
