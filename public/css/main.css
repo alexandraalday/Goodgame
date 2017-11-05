@@ -444,7 +444,7 @@ img.parallax-slider {
   cursor: pointer;
   padding: 15px 40px;
   display: inline-block;
-  margin-top: 10px;
+  margin: 20px auto;
   text-transform: uppercase;
   letter-spacing: 1px;
   outline: none;
@@ -466,7 +466,7 @@ img.parallax-slider {
 #inverse-button:active {
   color: #fff;
   background: #940000;
-  border: #940000;
+  border: 3px solid #940000;
 }
 
 /****** Media Queries *****/

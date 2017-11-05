@@ -6,35 +6,23 @@
   <body ng-controller="SearchController as ctrl">
   <% include ../partials/nav.ejs %>
 
-  <main style="padding-top: 70px">
-    <div class="col-md-10 col-md-offset-1">
-      <div class="row text-center">
-              <h1>GAME SEARCH</h1>
-              <hr class="separator separator-dark">
-      </div>
-
+  <main style="padding-top: 150px">
+    <div class="col-md-8 col-md-offset-2">
 
   <form ng-submit="ctrl.find(searchTerm)">
   	<div class='form-group'>
-  		<label>Search for a game</label>
   		<input type='text' ng-model="searchTerm" name='searchTerm' class='form-control' placeholder='Enter a game name'>
-  	</div>
-
-	<button type='submit' class='btn btn-danger'>Search</button>
-  </form>
+    	</div>
+  <div class="text-center">
+  	<button type='submit' id="inverse-button" class='btn btn-danger'>Search</button>
+    </form>
+  </div>
   </div>
 </main>
 
     <!-- game results -->
   <div class="col-md-10 col-md-offset-1">
   <table class="table table-hover">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Game</th>
-        <th>Summary</th>
-      </tr>
-    </thead>
     <tbody>
       <tr ng-repeat="game in ctrl.searchResults">
         <td><img src="{{ game.cover.url }}"></td>
@@ -46,7 +34,5 @@
   </div>
 
 </body>
-  <footer>
-    <% include ../partials/footer.ejs %>
-  </footer>
+
 </html>
