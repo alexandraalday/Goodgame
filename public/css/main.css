@@ -429,18 +429,14 @@ img.parallax-slider {
 /*** form styles ***/
 
 .formContainer {
-  margin: 15% 30%;
-}
-
-.center {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;  
+  margin: 10% 30%;
+  padding: 30px;
+  border: solid 1px #b2b2b2;
 }
 
 #inverse-button {
   border: none;
+  border-radius: 0;
   font-family: inherit;
   font-size: inherit;
   color: inherit;
@@ -453,18 +449,12 @@ img.parallax-slider {
   letter-spacing: 1px;
   outline: none;
   position: relative;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
 #inverse-button:after {
   content: '';
   position: absolute;
   z-index: -1;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
 #inverse-button {
@@ -476,7 +466,7 @@ img.parallax-slider {
 #inverse-button:active {
   color: #fff;
   background: #940000;
-  border: #fff;
+  border: #940000;
 }
 
 /****** Media Queries *****/
@@ -497,6 +487,9 @@ img.parallax-slider {
   .navbar-brand {
     font-size: 1em;
     margin-top: 2%;
+  }
+  .formContainer {
+    margin: 10px 50px;
   }
   /* Hide hover effects for mobile */
   figure.effect-portfolio:hover img {
