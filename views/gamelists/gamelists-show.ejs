@@ -40,11 +40,9 @@
       <% for(let i = 0; i < gamelist.games.length; i++) { %>
         <div class="col-md-4 portfolio-item">
           <figure class="effect-portfolio">
-            <img class="img-responsive" src="<%=gamelist.games[i].image%>">
+            <img class="img-responsive" src="<%=gamelist.games[i].cover%>">
             <figcaption>
               <h2><span><%=gamelist.games[i].title%></span></h2>
-              <p><%=gamelist.games[i].description%>
-              </p>
             </figcaption>
           </figure>
         </div><!-- end column -->

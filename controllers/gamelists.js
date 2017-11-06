@@ -21,7 +21,7 @@ router.get('/', (req, res)=>{
 
 // new gamelist
 router.get('/new', (req, res)=>{
-  if(req.session.currentUser){ //only logged in users can crete a gamelist
+  if(req.session.currentUser){ 
     User.find({}, (err, foundUsers)=>{
       res.render('gamelists/gamelists-new.ejs', {
         users: foundUsers,

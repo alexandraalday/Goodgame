@@ -86,7 +86,7 @@ router.post('/add', function(req, res) {
       console.log("-------------");
       console.log("gamelist found");
     })
-    .then(function(gamelist) {
+    .then(function(foundGamelist) {
       request({
         headers: apiHeaders,
         url: igdbURL + gameId,
@@ -97,20 +97,31 @@ router.post('/add', function(req, res) {
         if(!error && response.statusCode == 200) {
           let gameData = JSON.parse(body)[0];
           console.log("=============");
-          console.log(gameData);
+          console.log(gameData.name);
+          console.log(gameData.cover.cloudinary_id);
           Game.create({  
               igdbId: gameData.id,
               gamelistId: gamelistId,
               title: gameData.name,
               cover: gameData.cover.cloudinary_id
+          }, (err, createdGame) => {
+            console.log("game created and updating gamelist");
+            console.log(createdGame)
+            Gamelist.findOneAndUpdate(
+              {_id: gamelistId},
+              {$push: {games: createdGame}}, 
+              {safe: true, upsert: true},
+              (err, model)=>{
+                  console.log(err);
+              })
           })
           .then(function(game, wasAdded) {
             if (wasAdded) { 
               req.flash('success', 'Game added to your library');           
-              res.redirect('/');
+              res.redirect('/gamelists');
             } else {
               req.flash('error', 'Game already in your library');
-              res.redirect('/');
+              res.redirect('/games');
             }
           });
         } else {

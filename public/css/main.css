@@ -352,8 +352,9 @@ img.parallax-slider {
 }
 
 #addGameButton {
-  padding: 10px 90px;
+  padding: 10px 80px;
   margin-top: 25px;
+  border-radius: 0px;
 }
 
 #gamelistPsuedoButton {
