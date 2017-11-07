@@ -27,8 +27,10 @@ if (!gameData.videos) {
 	<!-- add game to gamelist section -->
 	<div class='col-xs-11'>
 		<% if(currentUser) { %>
-			<form method='POST' action='/games/add'>
-				<input type='hidden' name='gameId' value='<%= gameData.id %>'>
+			<form action='/games/add' method='POST'>
+				<input type='hidden' name='igdbId' value='<%= gameData.id %>'>
+				<input type='hidden' name='title' value='<%= gameData.name %>'>
+				<input type='hidden' name='cover' value='<%= imageURL + coverURL + gameData.cover.cloudinary_id %>'>
 
 			<!-- add game to gamelist button -->
 			<div class="dropdown">

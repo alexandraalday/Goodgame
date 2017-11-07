@@ -74,65 +74,32 @@ router.get('/:id', function(req, res) {
 
 // /POST, add game to gamelist
 router.post('/add', function(req, res) {
-  let gameId = req.body.gameId;
-  let gamelistId = req.body.gamelistId;
-
-  console.log("-------------");
-  console.log(req.body.gameId);
-  console.log("=============");
+  console.log(req.body.igdbId);
   console.log(req.body.gamelistId);
-
-    Gamelist.findById(req.body.gamelistId, (err, foundGamelist)=>{
-      console.log("-------------");
-      console.log("gamelist found");
-    })
-    .then(function(foundGamelist) {
-      request({
-        headers: apiHeaders,
-        url: igdbURL + gameId,
-        qs: {
-          fields: 'name,cover'
-        }
-      }, function(error, response, body) {
-        if(!error && response.statusCode == 200) {
-          let gameData = JSON.parse(body)[0];
-          console.log("=============");
-          console.log(gameData.name);
-          console.log(gameData.cover.cloudinary_id);
-          Game.create({  
-              igdbId: gameData.id,
-              gamelistId: gamelistId,
-              title: gameData.name,
-              cover: gameData.cover.cloudinary_id
-          }, (err, createdGame) => {
-            console.log("game created and updating gamelist");
-            console.log(createdGame)
-            Gamelist.findOneAndUpdate(
-              {_id: gamelistId},
-              {$push: {games: createdGame}}, 
-              {safe: true, upsert: true},
-              (err, model)=>{
-                  console.log(err);
-              })
-          })
-          .then(function(game, wasAdded) {
-            if (wasAdded) { 
-              req.flash('success', 'Game added to your library');           
-              res.redirect('/gamelists');
-            } else {
-              req.flash('error', 'Game already in your library');
-              res.redirect('/games');
-            }
-          });
-        } else {
-          res.redirect('/');
-        }
+  console.log(req.body.title);
+  console.log(req.body.cover);
+  Game.create(req.body, (err, createdGame)=>{
+      console.log('=============');
+      console.log(createdGame);
+      console.log('=============');
+      console.log(req.params.id);
+      Gamelist.findOneAndUpdate(
+      { _id: req.body.gamelistId},
+      {$push: {games: createdGame}},
+      {safe: true, upsert: true},
+      (err, model)=>{
+          console.log(err);
       })
-      
-    })
-
-
-})
+      Gamelist.findOne({ 'author': req.session.currentUser.username}, (err, foundGamelist)=>{
+        console.log('============')
+        console.log(foundGamelist); // not working yet
+          res.render('gamelists/gamelists-show.ejs', { // have to render here. redirect did  not work
+            gamelist: foundGamelist,
+            currentUser: req.session.currentUser
+          });
+        });
+      });
+    });
 
 
 
