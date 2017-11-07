@@ -1,8 +1,3 @@
-// this section is not in use currently, but is in progress for a future feature
-// users will be able to search for their game in the igdb database and add to their gamelists
-
-
-// DEPENDENCIES
 const express = require('express');
 const router = express.Router();
 const request = require('request');
@@ -17,9 +12,6 @@ let apiHeaders = {
       'Accept': 'application/json'
     };
 let igdbURL = 'https://api-2445582011268.apicast.io/games/'
-
-
-
 
 // game search index route
 router.get('/', (req, res)=>{
@@ -72,17 +64,9 @@ router.get('/:id', function(req, res) {
   })
 });
 
-// /POST, add game to gamelist
+// add game to gamelist
 router.post('/add', function(req, res) {
-  console.log(req.body.igdbId);
-  console.log(req.body.gamelistId);
-  console.log(req.body.title);
-  console.log(req.body.cover);
   Game.create(req.body, (err, createdGame)=>{
-      console.log('=============');
-      console.log(createdGame);
-      console.log('=============');
-      console.log(req.params.id);
       Gamelist.findOneAndUpdate(
       { _id: req.body.gamelistId},
       {$push: {games: createdGame}},
@@ -91,18 +75,12 @@ router.post('/add', function(req, res) {
           console.log(err);
       })
       Gamelist.findOne({ 'author': req.session.currentUser.username}, (err, foundGamelist)=>{
-        console.log('============')
-        console.log(foundGamelist); // not working yet
-          res.render('gamelists/gamelists-show.ejs', { // have to render here. redirect did  not work
+          res.render('gamelists/gamelists-show.ejs', {
             gamelist: foundGamelist,
             currentUser: req.session.currentUser
           });
-        });
       });
-    });
+  });
+});
 
-
-
-
-// export
 module.exports = router;

@@ -1,11 +1,9 @@
-// DEPENDENCIES
 const express = require('express');
 const User = require('../models/user.js');
 const Gamelist = require('../models/gamelist.js');
 const Game = require('../models/game.js');
 const router = express.Router();
  
-//  GET ROUTE
 // index
 router.get('/', (req, res)=>{
   User.find({}, (err, foundUsers)=>{
@@ -71,16 +69,14 @@ router.get('/edit-games/:id', (req, res)=>{
 // edit gamelist info
 router.put('/:id', (req, res)=>{
   Gamelist.findByIdAndUpdate(req.params.id, req.body, (err, updatedGamelist)=>{
-       Gamelist.findOneAndUpdate(
-            {_id: req.params.id},
-            {$push: {gamelists: updatedGamelist}},
-            {safe: true, upsert: true},
-            (err, model)=>{
-              console.log(err);
-            })
-          res.redirect('/gamelists/' + updatedGamelist.id);
-         // });
-      // });
+    Gamelist.findOneAndUpdate(
+      {_id: req.params.id},
+      {$push: {gamelists: updatedGamelist}},
+      {safe: true, upsert: true},
+      (err, model)=>{
+        console.log(err);
+      })
+      res.redirect('/gamelists/' + updatedGamelist.id);
   });
 });
 
@@ -141,24 +137,20 @@ router.get('/:id', (req, res)=>{
   });
 });
 
-
-
-//  POST ROUTE
 // create a gamelist
 router.post('/', (req, res)=>{
-  req.body.username = req.session.currentUser.username; //current user is listed as gamelist author
-    Gamelist.create(req.body, (err, createdGamelist)=>{
-          User.findOneAndUpdate( // had to use Mongoose specific push
-            {username: req.body.username},
-            {$push: {gamelists: createdGamelist}},
-            {safe: true, upsert: true},
-            (err, model)=>{
-              console.log(err);
-            })
-            res.redirect('/gamelists');
-      });
+  req.body.username = req.session.currentUser.username; 
+  Gamelist.create(req.body, (err, createdGamelist)=>{
+    User.findOneAndUpdate( 
+      {username: req.body.username},
+      {$push: {gamelists: createdGamelist}},
+      {safe: true, upsert: true},
+      (err, model)=>{
+        console.log(err);
+      })
+    res.redirect('/gamelists');
   });
-
+});
 
 // delete route
 router.delete('/:id', (req, res)=>{
@@ -169,10 +161,9 @@ router.delete('/:id', (req, res)=>{
         Game.findByIdAndRemove(deletedGamelist.games._id, (err, foundGames)=>{
           res.redirect('/gamelists');
         });
-       });
-     });
-   });
+      });
+    });
+  });
 });
- 
-//  EXPORT 
+
 module.exports = router;

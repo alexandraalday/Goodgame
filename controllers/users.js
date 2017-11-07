@@ -1,4 +1,3 @@
-//  DEPENDENCIES
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const User = require('../models/user.js');
@@ -19,45 +18,23 @@ router.get('/', (req, res)=>{
 
 // new user page
 router.get('/new', (req, res)=>{
-  if(!req.session.currentUser) { //user must be logged out to create a new account
+  if(!req.session.currentUser) { 
       return res.render('users/users-new.ejs');
     } else {
       return res.send('This user already has an account. You must logout to create a new one.');
   }
 });
 
-// // seed data
-// router.get('/seed', (req, res)=>{
-//   User.create([
-//     {
-//        username: "hellionoftroy",
-//        password: "p00p",
-//        icon: "http://static.tumblr.com/132fe3d842522ec66aebdef5463122d6/qsi2ine/JcKnk73b0/tumblr_static_7o1ldyzud3oc4owgsw0sc08ss.gif",
-//        description: "i made this",
-//        gamelists: []
-//     }, {
-//        username: "test",
-//        password: "test",
-//        icon: "http://static.tumblr.com/132fe3d842522ec66aebdef5463122d6/qsi2ine/JcKnk73b0/tumblr_static_7o1ldyzud3oc4owgsw0sc08ss.gif",
-//        description: "i am a test",
-//        gamelists: []
-//     }], (err, data)=>{
-//     res.redirect('/')
-//   })
-// });
-
-
-
 // edit page
 router.get('/:id/edit', (req, res)=>{
   User.findById(req.params.id, (err, foundUser)=>{
-    if(req.session.currentUser.username === foundUser.username){ //user can only edit their account
+    if(req.session.currentUser.username === foundUser.username){ 
       return res.render('users/users-edit.ejs', {
         user: foundUser, 
         currentUser: req.session.currentUser
       });
     } else {
-        return res.send('you do not have permission to edit this account');
+        return res.send('You do not have permission to edit this account');
     }
   });
 });
@@ -127,8 +104,4 @@ router.delete('/:id', (req, res)=>{
   });
 });
 
-
-
-
-//  EXPORT
 module.exports = router;
