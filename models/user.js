@@ -1,9 +1,7 @@
-//	DEPENDENCIES
 const mongoose = require('mongoose');
 const Gamelist = require('./gamelist.js');
 const Game = require('./game.js')
 
-//	SCHEMA
 const userSchema = mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
@@ -14,5 +12,4 @@ const userSchema = mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-//	EXPORT
 module.exports = User;

@@ -1,7 +1,5 @@
-//	DEPENDENCIES
 const mongoose = require('mongoose');
  
-// SCHEMA 
 const gameSchema = mongoose.Schema({
   igdbId: { type: Number, required: true },
   gamelistId: { type: String, required: true },
@@ -11,5 +9,4 @@ const gameSchema = mongoose.Schema({
  
 const Game = mongoose.model('Game', gameSchema);
  
-//	EXPORT
 module.exports = Game;
