@@ -19,9 +19,9 @@
           <a id="inverse-button" class="btn btn-danger text-center" href="/gamelists/new">Add A Gamelist</a>
         </div>
         <!-- end section title row -->
-        <div class="row">
+        <div class="grid">
         <% for(let i = 0; i < gamelists.length; i++) { %>
-          <div class="col-md-4 portfolio-item">
+          <div class="portfolio-item">
             <figure class="effect-portfolio">
               <img class="img-responsive" src="<%=gamelists[i].coverImage%>">
               <figcaption>

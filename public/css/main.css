@@ -193,8 +193,16 @@ figure p {
   letter-spacing: 1px;
 }
 
+.grid {
+  width: 100%;
+  margin-left: 2%;
+}
+
 .portfolio-item {
-  margin: 15px auto;
+  width: 300px;
+  height: auto;
+  float: left;
+  margin: 0 15px;
 }
 
 figure.effect-portfolio {

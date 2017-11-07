@@ -31,11 +31,20 @@ $('.slider').slick({
         slidesToScroll: 1
       }
     }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
+    ]
 });
+
+let $grid = $('.grid').imagesLoaded( function(){
+  $grid.masonry({
+    itemSelector: '.portfolio-item',
+    columnWidth: 300,
+    isAnimated: !Modernizr.csstransitions,
+    easing: 'linear' 
+  });
+});
+
+}
+
       
 
 });  
