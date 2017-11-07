@@ -326,7 +326,10 @@ footer {
 
 #user-buttons, #gamelist-buttons {
   display: flex;
-  margin-left: 35%;
+}
+
+#gamelist-buttons #button {
+  margin: 18px 10px;
 }
 
 
@@ -531,6 +534,23 @@ img.parallax-slider {
     -webkit-transform: none;
     transform: none;
   }
+
+  #gamelist-icon {
+    margin-top: 100px;
+    margin-left: -75px;
+    max-width: 300px;
+  }
+  #gamelist-info {
+   text-align: center;
+   margin-top: 30px;
+   margin-left: -40px;
+  }
+  #gamelist-info #button {
+    background: #D3D3D3;
+    border: 3px solid #D3D3D3;
+    color: #fff;
+  }
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 950px) {
@@ -540,6 +560,9 @@ img.parallax-slider {
   .intro-text {
     color: #fff;
     padding: 200px 0;
+  }
+  #gamelist-icon {
+    max-width: 300px;
   }
 }
 

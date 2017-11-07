@@ -16,39 +16,36 @@ let coverURL = 't_cover_big/'
       <img id="gamelist-icon" src="<%=gamelist.coverImage%>">
       <div id="gamelist-info">
         <h1><%=gamelist.title%></h1>
+        <h3>A gamelist by: <%=gamelist.author%></a></h3>
         <p><%=gamelist.description%></p>
+        <% if(currentUser) {%>
+        <div id="gamelist-buttons">
+          <form action="/gamelists/edit/<%=gamelist.id%>">
+            <input id="inverse-button" class="btn btn-secondary" type="submit" value="Update"/>
+          </form>
+          <form action="/gamelists/<%=gamelist.id%>?_method=DELETE" method="POST">
+              <input id="button" class="btn btn-danger" type="submit" value="Remove" />
+          </form>
+        <% } %>
+      </div>
       </div>
     </div>
 
       <!-- begin user edit/delete buttons -->
-    <div id="gamelist-buttons" class="col-sm-4 text-center">
+    <div class="col-sm-12 text-center">
     <% if(currentUser) {%>
-          <form action="/gamelists/edit/<%=gamelist.id%>">
-            <input class="btn btn-secondary" type="submit" value="Edit Gamelist"/>
-            </form>
-          <form action="/gamelists/<%=gamelist.id%>?_method=DELETE" method="POST">
-              <input class="btn btn-danger" type="submit" value="Delete Gamelist" />
-          </form>
-           <a class="btn btn-primary" href="/gamelists/<%=gamelist.id%>/add-games">Add A Game</a>
+           <a id="inverse-button" class="btn btn-primary" href="/games">Add A Game</a>
         <% } %>
     </div>
   
     <!-- begin portfolio style section -->
     <section id="portfolio" name="portfolio">
     <div class="container">
-      <div class="row text-center">
-        <h1>GAMES</h1>
-        <hr class="separator separator-dark">
-      </div>
-       <!-- end section title row -->
       <div class="row">
       <% for(let i = 0; i < gamelist.games.length; i++) { %>
         <div class="col-md-4 portfolio-item">
-          <figure class="effect-portfolio">
-            <img class="img-responsive" src="<%=gamelist.games[i].cover%>">
-            <figcaption>
-              <h2><span><%=gamelist.games[i].title%></span></h2>
-            </figcaption>
+          <figure>
+            <img src="<%=gamelist.games[i].cover%>">
           </figure>
         </div><!-- end column -->
         <% } %>
