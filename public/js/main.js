@@ -31,8 +31,9 @@ $('.slider').slick({
         slidesToScroll: 1
       }
     }
-    ]
+  ]
 });
+      
 
 let $grid = $('.grid').imagesLoaded( function(){
   $grid.masonry({
@@ -43,8 +44,6 @@ let $grid = $('.grid').imagesLoaded( function(){
   });
 });
 
-}
 
-      
 
 });  
