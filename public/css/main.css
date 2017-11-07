@@ -153,14 +153,16 @@ figure {
   position: relative;
   overflow: hidden;
   margin: 15px auto;
+  padding: 10px;
   max-width: 578px;
   max-height: 398px;
+  border-radius: 3px;
 }
 
 figure img {
   position: relative;
   display: block;
-  opacity: 0.7;
+  margin: auto;
 }
 
 figure figcaption {
@@ -180,7 +182,7 @@ figure figcaption > a {
 
 figure h2 {
   word-spacing: -0.15em;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 figure h2 span {
@@ -195,7 +197,7 @@ figure p {
 
 .grid {
   width: 100%;
-  margin-left: 2%;
+  margin: auto;
 }
 
 .portfolio-item {
@@ -206,7 +208,7 @@ figure p {
 }
 
 figure.effect-portfolio {
-  background: #333;
+  background: #D3D3D3;
 }
 
 figure.effect-portfolio img,
@@ -220,7 +222,7 @@ figure.effect-portfolio p {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 30px;
+  padding: 10px;
 }
 
 figure.effect-portfolio p {

@@ -5,7 +5,7 @@ const Game = require('./game.js')
 const userSchema = mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  icon: { type: String, default: 'http://place-hold.it/100'},
+  icon: { type: String, default: '/assets/Video-Game-Controller-Icon.svg'},
   description: { type: String },
   gamelists: [Gamelist.schema],
 });
