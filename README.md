@@ -32,6 +32,7 @@ Originally, this app only consumed its own API and users had to manually enter a
 * Font Awesome
 * Slick
 * Parallax
+* Masonry
 
 I was looking to practice using slick carousel and parallax effects. Both the parallax header and the slick carousel of images and videos are dynamically rendered using IGDB endpoints from the user's search results. 
 
