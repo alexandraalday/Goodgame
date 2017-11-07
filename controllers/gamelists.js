@@ -140,6 +140,7 @@ router.get('/:id', (req, res)=>{
 // create a gamelist
 router.post('/', (req, res)=>{
   req.body.username = req.session.currentUser.username; 
+  req.body.author = req.session.currentUser.username; 
   Gamelist.create(req.body, (err, createdGamelist)=>{
     User.findOneAndUpdate( 
       {username: req.body.username},

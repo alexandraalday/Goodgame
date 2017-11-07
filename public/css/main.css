@@ -16,9 +16,6 @@ h5,
 h6 {
   font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
-}
-
-h1 {
   font-weight: 900;
 }
 
@@ -492,6 +489,10 @@ img.parallax-slider {
   color: #fff;
   background: #940000;
   border: 3px solid #940000;
+}
+
+#legend {
+  border: 0;
 }
 
 /****** Media Queries *****/
