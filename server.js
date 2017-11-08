@@ -10,7 +10,7 @@ const app = express();
 require('dotenv').config();
 
 
-//	ENVIRONMENT (for heroku) 
+//	ENVIRONMENT
 const port = process.env.PORT || 3000;
 const mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/goodgame';
 
