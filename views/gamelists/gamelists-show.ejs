@@ -7,7 +7,6 @@
   <body>
     <% include ../partials/nav.ejs %>
 
-    <main>
       <% 
       let imageURL = 'https://images.igdb.com/igdb/image/upload/'
       let coverURL = 't_cover_big/'
@@ -20,6 +19,7 @@
           <h3>A gamelist by: <%=gamelist.author%></h3>
           <p><%=gamelist.description%></p>
           <% if(currentUser) {%>
+            <% if(currentUser.username === gamelist.author) {%>
             <div id="gamelist-buttons">
               <form action="/gamelists/edit/<%=gamelist.id%>">
                 <input id="inverse-button" class="btn btn-secondary" type="submit" value="Update"/>
@@ -28,13 +28,16 @@
                   <input id="button" class="btn btn-danger" type="submit" value="Remove" />
               </form>
             </div>
+            <% } %> 
           <% } %> 
         </div>
       </div>
 
       <div class="col-sm-12 text-center">
         <% if(currentUser) {%>
+          <% if(currentUser.username === gamelist.author) {%>
           <a id="inverse-button" class="btn btn-primary" href="/games">Add A Game</a>
+          <% } %>
         <% } %>
       </div>
     
@@ -51,7 +54,6 @@
           </div>
         </div>
       </section>
-    </main>
 
   </body>
   

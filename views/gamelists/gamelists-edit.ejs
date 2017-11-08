@@ -4,50 +4,52 @@
     <% include ../partials/head.ejs %>
     <link rel="stylesheet" type="text/css" href="/css/main.css"> 
   </head>
+  
   <body>
-  <% include ../partials/nav.ejs %>
+    <% include ../partials/nav.ejs %>
 
-  <main style="padding: 150px 0">
+    <main>
+      <form class="form-horizontal" action="/gamelists/<%=gamelist.id%>?_method=PUT" method="POST">
+        <fieldset>
+          <legend class="col-lg-10 col-lg-offset-2"><h3>Edit Gamelist Info</h3></legend>
+          
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Title</label>
+            <div class="col-lg-6">
+              <input class="form-control" name="title" value="<%=gamelist.title %>" type="text">
+            </div>
+          </div>
 
-<!--  new user form -->
-<form class="form-horizontal" action="/gamelists/<%=gamelist.id%>?_method=PUT" method="POST">
-  <fieldset>
-    <legend class="col-lg-10 col-lg-offset-2"><h3>Edit Gamelist Info</h3></legend>
-    <div class="form-group">
-      <label class="col-lg-2 control-label">Title</label>
-      <div class="col-lg-6">
-        <input class="form-control" name="title" value="<%=gamelist.title %>" type="text">
-      </div>
-    </div>
-    </div>
-        <input class="form-control" name="author" type="hidden">
-    </div>
-    <div class="form-group">
-      <label class="col-lg-2 control-label">Cover Image</label>
-      <div class="col-lg-6">
-        <input class="form-control" name="coverImage" value="<%=gamelist.coverImage%>" type="text">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-lg-2 control-label">Description</label>
-      <div class="col-lg-6">
-        <input class="form-control" name="description" value="<%=gamelist.description%>" type="text">
-      </div>
-    </div>
+              <input class="form-control" name="author" type="hidden">
 
-    <div class="form-group">
-      <div class="col-lg-6 col-lg-offset-2">
-        <input type="submit" id="inverse-button" class="btn btn-primary"></input>
-      </div>
-    </div>
-  </fieldset>
-</form>
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Cover Image</label>
+            <div class="col-lg-6">
+              <input class="form-control" name="coverImage" value="<%=gamelist.coverImage%>" type="text">
+            </div>
+          </div>
+         
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Description</label>
+            <div class="col-lg-6">
+              <input class="form-control" name="description" value="<%=gamelist.description%>" type="text">
+            </div>
+          </div>
 
-</main>
-
-<footer>
-  <% include ../partials/footer.ejs %>
-</footer>
+          <div class="form-group">
+            <div class="col-lg-6 col-lg-offset-2">
+              <input type="submit" id="inverse-button" class="btn btn-primary"></input>
+            </div>
+          </div>
+        
+        </fieldset>
+      </form>
+    </main>
 
   </body>
+
+  <footer>
+    <% include ../partials/footer.ejs %>
+  </footer>
+
 </html>
