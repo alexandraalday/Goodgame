@@ -3,99 +3,90 @@
   <head>
     <% include ../partials/head.ejs %>
   </head>
+  
   <body ng-controller="SearchController as ctrl">
   	<% include ../partials/nav.ejs %>
 
-  <main style="padding-top: 70px">
-<% 
-let imageURL = 'https://images.igdb.com/igdb/image/upload/'
-let coverURL = 't_cover_big/'
-let hugeURL = 't_screenshot_huge/'
-let medURL = 't_screenshot_med/'
-if (!gameData.screenshots) {
-	gameData.screenshots = [{cloudinary_id: 'blank'}];
-}
-if (!gameData.videos) {
-	gameData.videos = [{standbyVideo: 'blank'}];
-}
-%>
+  		<main style="padding-top: 70px">
+			<% 
+			let imageURL = 'https://images.igdb.com/igdb/image/upload/'
+			let coverURL = 't_cover_big/'
+			let hugeURL = 't_screenshot_huge/'
+			let medURL = 't_screenshot_med/'
+			if (!gameData.screenshots) {
+				gameData.screenshots = [{cloudinary_id: 'blank'}];
+			}
+			if (!gameData.videos) {
+				gameData.videos = [{standbyVideo: 'blank'}];
+			}
+			%>
 
-<div class='parallax-window gameBackground' data-parallax='scroll' data-image-src='<%= imageURL + hugeURL + gameData.screenshots[0].cloudinary_id%>'>
-	<h1 class='gameTitle'><%= gameData.name %></h1>
-	<img class='gameCoverImg' src='<%= imageURL + coverURL + gameData.cover.cloudinary_id %>'>
-	
-	<!-- add game to gamelist section -->
-	<div class='col-xs-11'>
-		<% if(currentUser) { %>
-			<form action='/games/add' method='POST'>
-				<input type='hidden' name='igdbId' value='<%= gameData.id %>'>
-				<input type='hidden' name='title' value='<%= gameData.name %>'>
-				<input type='hidden' name='cover' value='<%= imageURL + coverURL + gameData.cover.cloudinary_id %>'>
+			<div class='parallax-window gameBackground' data-parallax='scroll' data-image-src='<%= imageURL + hugeURL + gameData.screenshots[0].cloudinary_id%>'>
+				<h1 class='gameTitle'><%= gameData.name %></h1>
+				<img class='gameCoverImg' src='<%= imageURL + coverURL + gameData.cover.cloudinary_id %>'>
+				
+				<div class='col-xs-11'>
+					<% if(currentUser) { %>
+						<form action='/games/add' method='POST'>
+							<input type='hidden' name='igdbId' value='<%= gameData.id %>'>
+							<input type='hidden' name='title' value='<%= gameData.name %>'>
+							<input type='hidden' name='cover' value='<%= imageURL + coverURL + gameData.cover.cloudinary_id %>'>
 
-			<!-- add game to gamelist button -->
-			<div class="dropdown">
-			  	<button id="gameAddButton" class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Add to A List
-			  		<span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-
-			  		<!-- list all gamelists for current user on button click -->
-			  		<% if(currentUser) {%>
-			      		<% for(let i = 0; i < currentUser.gamelists.length; i++) { %>
-			            	<li><input type='hidden' name='gamelistId' value='<%= currentUser.gamelists[i]._id %>'><button id="gamelistPsuedoButton" type="submit"><%=currentUser.gamelists[i].title%></button></li>     
-			        	<% } %>
+							<div class="dropdown">
+						  		<button id="gameAddButton" class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Add to A List
+						  			<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+						  			<% if(currentUser) {%>
+						      			<% for(let i = 0; i < currentUser.gamelists.length; i++) { %>
+						            		<li><input type='hidden' name='gamelistId' value='<%= currentUser.gamelists[i]._id %>'><button id="gamelistPsuedoButton" type="submit"><%=currentUser.gamelists[i].title%></button></li>     
+						        		<% } %>
+									<% } %>
+					  			</ul>
+						 	</div>
+						</form>
 					<% } %>
-		  		</ul>
-			 </div>
-			</form>
-		<% } %>
-	</div>
-</div>
-
-
-
-
-<div class='row gameDetail'>
-	<div class='col-xs-offset-4 col-xs-6'>
-		<%if (gameData.summary) { %>
-			<p><%= gameData.summary %></p>
-		<% } else { %>
-			<p>No game plot available</p>
-		<% }; %>
-		<p><%= gameData.storyline %></p>
-	</div>
-
-</div>
-  
-
-<div class="gameGallery">
-  <div class="gameSlider">
-		<% gameData.screenshots.forEach(function(screenshot) { %>
-		   <div class="image">
-			<div>
-				<img src='<%= imageURL + medURL + screenshot.cloudinary_id %>'>
+				</div>
 			</div>
-		</div>
-		<% }) %>
 
-		<% gameData.videos.forEach(function(video) { %>
-		   <div class="image">
-			<div>
-				<iframe width="520" height="315" src="https://www.youtube.com/embed/<%=video.video_id %>"></iframe>
+			<div class='row gameDetail'>
+				<div class='col-xs-offset-4 col-xs-6'>
+					<%if (gameData.summary) { %>
+						<p><%= gameData.summary %></p>
+					<% } else { %>
+						<p>No game plot available</p>
+					<% }; %>
+					<p><%= gameData.storyline %></p>
+				</div>
 			</div>
-			</div>
-		<% }) %>
-  </div>
-</div> 
+			  
+			<div class="gameGallery">
+			  	<div class="gameSlider">
+					<% gameData.screenshots.forEach(function(screenshot) { %>
+					   <div class="image">
+							<div>
+								<img src='<%= imageURL + medURL + screenshot.cloudinary_id %>'>
+							</div>
+						</div>
+					<% }) %>
+					<% gameData.videos.forEach(function(video) { %>
+					   <div class="image">
+							<div>
+								<iframe width="520" height="315" src="https://www.youtube.com/embed/<%=video.video_id %>"></iframe>
+							</div>
+						</div>
+					<% }) %>
+			 	</div>
+			</div> 
 
-
-
-</main>
-</body>
+		</main>
+	
+	</body>
 
 	<footer>
 	  <% include ../partials/footer.ejs %>
 	</footer>
+
 </html>
 
 

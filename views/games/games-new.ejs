@@ -4,50 +4,59 @@
   <head>
     <% include ../partials/head.ejs %>
   </head>
+ 
   <body>
-  <% include ../partials/nav.ejs %>
-  <main style="padding-top: 70px">
+    <% include ../partials/nav.ejs %>
+  
+    <main>
 
-<!--  new user form -->
-<form class="form-horizontal" action="/gamelists/<%=gamelist.id%>" method="POST">
-  <fieldset>
-    <legend class="col-lg-10 col-lg-offset-2">New Game</legend>
-    <div class="form-group">
-      <label class="col-lg-2 control-label">Title</label>
-      <div class="col-lg-6">
-        <input class="form-control" name="title" placeholder="Game Title" type="text">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-lg-2 control-label">Platform</label>
-      <div class="col-lg-6">
-        <input class="form-control" name="platform" placeholder="Game platform (i.e. Xbox, Playstation, Nintendo, PC, etc.)" type="text">
-      </div>
-    </div>
-      <div class="form-group">
-      <label class="col-lg-2 control-label">Game Image</label>
-      <div class="col-lg-6">
-        <input class="form-control" name="image" placeholder="Game cover image URL" type="text">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-lg-2 control-label">Description</label>
-      <div class="col-lg-6">
-        <input class="form-control" name="description" placeholder="Short game description (i.e. first person shooter, online multiplayer, mmorpg, etc.)" type="text">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-6 col-lg-offset-2">
-        <input type="reset" class="btn btn-default"></input>
-        <input type="submit" class="btn btn-primary"></input>
-      </div>
-    </div>
-  </fieldset>
-</form>
-</main>
+      <form class="form-horizontal" action="/gamelists/<%=gamelist.id%>" method="POST">
+        <fieldset>
+          <legend class="col-lg-10 col-lg-offset-2">New Game</legend>
+          
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Title</label>
+            <div class="col-lg-6">
+              <input class="form-control" name="title" placeholder="Game Title" type="text">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Platform</label>
+            <div class="col-lg-6">
+              <input class="form-control" name="platform" placeholder="Game platform (i.e. Xbox, Playstation, Nintendo, PC, etc.)" type="text">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Game Image</label>
+            <div class="col-lg-6">
+              <input class="form-control" name="image" placeholder="Game cover image URL" type="text">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Description</label>
+            <div class="col-lg-6">
+              <input class="form-control" name="description" placeholder="Short game description (i.e. first person shooter, online multiplayer, mmorpg, etc.)" type="text">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="col-lg-6 col-lg-offset-2">
+              <input type="reset" class="btn btn-default"></input>
+              <input type="submit" class="btn btn-primary"></input>
+            </div>
+          </div>
+        
+        </fieldset>
+      </form>
+    </main>
    
   </body>
+  
   <footer>
     <% include ../partials/footer.ejs %>
   </footer>
+
 </html>

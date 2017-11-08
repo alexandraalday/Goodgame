@@ -3,36 +3,35 @@
   <head>
     <% include ../partials/head.ejs %>
   </head>
+  
   <body ng-controller="SearchController as ctrl">
-  <% include ../partials/nav.ejs %>
+    <% include ../partials/nav.ejs %>
 
-  <main style="padding-top: 150px">
-    <div class="col-md-8 col-md-offset-2">
+    <main>
+      <div class="col-md-8 col-md-offset-2">
+        <form ng-submit="ctrl.find(searchTerm)">
+        	<div class='form-group'>
+        		<input type='text' ng-model="searchTerm" name='searchTerm' class='form-control' placeholder='Enter a game name'>
+          </div>
+          <div class="text-center">
+        	  <button type='submit' id="inverse-button" class='btn btn-danger'>Search</button>
+          </div>
+        </form>
+      </div>
+    </main>
 
-  <form ng-submit="ctrl.find(searchTerm)">
-  	<div class='form-group'>
-  		<input type='text' ng-model="searchTerm" name='searchTerm' class='form-control' placeholder='Enter a game name'>
-    	</div>
-  <div class="text-center">
-  	<button type='submit' id="inverse-button" class='btn btn-danger'>Search</button>
-    </form>
-  </div>
-  </div>
-</main>
+    <div class="col-md-10 col-md-offset-1">
+      <table class="table table-hover">
+        <tbody>
+          <tr ng-repeat="game in ctrl.searchResults">
+            <td><img src="{{ game.cover.url }}"></td>
+            <td><a href='/games/{{game.id}}'>{{ game.name }}</a></td>
+            <td>{{ game.summary }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-    <!-- game results -->
-  <div class="col-md-10 col-md-offset-1">
-  <table class="table table-hover">
-    <tbody>
-      <tr ng-repeat="game in ctrl.searchResults">
-        <td><img src="{{ game.cover.url }}"></td>
-        <td><a href='/games/{{game.id}}'>{{ game.name }}</a></td>
-        <td>{{ game.summary }}</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-
-</body>
+  </body>
 
 </html>

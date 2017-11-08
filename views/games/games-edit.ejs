@@ -1,22 +1,26 @@
-<!-- used during testing -->
+<!-- view used during testing -->
 <!DOCTYPE html>
 <html>
   <head>
     <% include ../partials/head.ejs %>
   </head>
+  
   <body>
- <% include ../partials/nav.ejs %>
+    <% include ../partials/nav.ejs %>
 
     <form action="/gamelists/edit-games/<%=games.id%>?_method=PUT" method="POST">
-    <% for(let i = 0; i < games.title.length; i++){ %>
+      <% for(let i = 0; i < games.title.length; i++){ %>
         <input type="text" name="title" placeholder="game title" value="<%=games.title[i]%>" />
         <input type="text" name="platform" placeholder="game platform" value="<%=games.platform[i]%>"/>
         <input type="text" name="cover image link" placeholder="game cover image link" value="<%=games.image[i]%>"/>
         <input type="text" name="description" placeholder="game description" value="<%=games.description[i]%>"/><br />
      <% } %>
-    <input type="submit" value="submit"/>
+      <input type="submit" value="submit"/>
+    </form>
   </body>
+  
   <footer>
     <% include ../partials/footer.ejs %>
   </footer>
+
 </html>
