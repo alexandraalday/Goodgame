@@ -42,7 +42,6 @@ router.get('/searchResult/:search', function(req, res) {
   });
 });
 
-
 // individual game data
 router.get('/:id', function(req, res) {
   let gameId = req.params.id;

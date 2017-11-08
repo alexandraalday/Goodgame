@@ -81,18 +81,18 @@ router.delete('/:id', (req, res)=>{
     let gameIds = [];
     for(let i = 0; i < deletedUser.gamelists.length; i++){
       gamelistIds.push(deletedUser.gamelists[i]._id);
-      songIds.push(deletedUser.gamelists[i].games._id);
+      gameIds.push(deletedUser.gamelists[i].games._id);
     };
     Gamelist.remove(
       {
         _id: {
-          $in: gamelistIds
+          $inc: gamelistIds
         }
       },
       (err, removedGamelists)=>{
         Game.remove({
           _id: {
-            $in: gameIds
+            $inc: gameIds
           }
         },
         (err, removedGames)=>{

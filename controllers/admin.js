@@ -1,5 +1,5 @@
-const express     = require('express');
-const router      = express.Router();
+const express = require('express');
+const router = express.Router();
 const User = require('../models/user.js');
 const Gamelist = require('../models/gamelist.js');
 const Game = require('../models/game.js');
@@ -21,7 +21,6 @@ router.delete('/gamelists/:id',(req,res)=>{
   })
 })
 
-
 router.get('/users',(req,res)=>{
   User.find({}, (err,Users)=>{
     res.render('admin/admin-users.ejs', {
@@ -34,6 +33,5 @@ router.delete('/user/:id',(req,res)=>{
     res.redirect('/admin/users');
   })
 })
-
 
 module.exports = router;

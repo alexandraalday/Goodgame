@@ -24,7 +24,6 @@ section {
   padding-bottom: 50px;
 }
 
-
 .separator {
   max-width: 300px;
   margin: 0 auto 15px auto;
@@ -39,12 +38,16 @@ section {
   border-top: solid 3px;
 }
 
-/* intro styles */
-
 .container {
   margin: 10px 15px;
   width: 98%;
 }
+
+/****************************
+
+ navigation styles 
+
+****************************/
 
 .brandIcon {
   max-height: 64px;
@@ -65,11 +68,17 @@ section {
   letter-spacing: 1px;
 }
 
+
+/****************************
+
+ main button styles 
+
+****************************/
+
 #button {
-  border: none;
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
+  border: 3px solid #fff;
+  color: #fff;
+  border-radius: 0;
   background: none;
   cursor: pointer;
   padding: 15px 40px;
@@ -77,25 +86,10 @@ section {
   margin-top: -10px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  outline: none;
   position: relative;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
-}
-
-#button:after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-#button {
-  border: 3px solid #fff;
-  color: #fff;
 }
 
 #button:hover,
@@ -104,6 +98,33 @@ section {
   background: #fff;
 }
 
+#inverse-button {
+  border: 3px solid #ef1a28;
+  color: #fff;
+  border-radius: 0;
+  background: #ef1a28;
+  cursor: pointer;
+  padding: 15px 40px;
+  display: inline-block;
+  margin: 20px auto;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+#inverse-button:hover,
+#inverse-button:active {
+  color: #fff;
+  background: #940000;
+  border: 3px solid #940000;
+}
+
+/****************************
+
+ heading styles 
+
+****************************/
+
 #heading {
   background: transparent;
   min-height: 100%;
@@ -111,7 +132,6 @@ section {
   margin-top: 5%;
 }
 
- /* code to apply filter to background from stackoverflow.com */
 #heading:before {
   content: ' ';
   width: 100%;
@@ -137,22 +157,24 @@ section {
   padding: 100px 0;
 }
 
-#scroll {
+#arrowDown {
 	margin-top: 100px;
 	color: #fff;
   	font-size: 5em;
   	padding: 10px;
 }
 
+/****************************
 
-/* code for caption hover effects from Codrops and K. Anthony;  slightly modified*/
+ gamelist portfolio styles 
+
+****************************/
+
 figure {
   position: relative;
   overflow: hidden;
   margin: 15px auto;
   padding: 10px;
-  max-width: 578px;
-  max-height: 398px;
   border-radius: 3px;
 }
 
@@ -248,8 +270,12 @@ figure.effect-portfolio:hover p {
   transform: translate3d(0, 0, 0);
 }
 
+/****************************
 
-/* about styles */
+ about section styles 
+
+****************************/
+
 #about {
   font-size: 1.5em;
   background: #ef1a28;
@@ -260,8 +286,11 @@ figure.effect-portfolio:hover p {
   margin: 80px auto;
 }
 
+/****************************
 
-/* contact styles */
+contact section styles 
+
+****************************/
 
 .social {
   padding: 0px;
@@ -269,8 +298,8 @@ figure.effect-portfolio:hover p {
 
 .social li {
 	list-style: none;
-  	display: inline-block;
-  	margin: 10px;
+  display: inline-block;
+  margin: 10px;
 }
 
 .social li a {
@@ -295,16 +324,12 @@ figure.effect-portfolio:hover p {
 }
 
 
+/****************************
 
-/*footer styles*/
+game show page styles 
 
-footer { 
-  font-weight: bold; 
-  text-align: center;
-}
+****************************/
 
-
-/*show page styles*/
 #profile, #gamelist {
 	padding-left: 20%;
   padding-top: 10%
@@ -352,43 +377,43 @@ img.parallax-slider {
 .gameTitle {
   padding-top: 250px;
   font-size: 4em;
-  color: white;
-  margin-left: -100px;
-  font-family: "Roboto";
+  color: #fff;
+  text-align: center;
   font-weight: 900;
   letter-spacing: 1px;
 }
 
-#addGameButton {
+.gameCoverImg {
+  align-self: baseline;
+  margin-left: 5%;
+  position: relative;
+}
+
+#gameAddButton {
   padding: 10px 80px;
   margin-top: 25px;
   border-radius: 0px;
 }
 
 #gamelistPsuedoButton {
-   padding: 10px 90px;
-   borer: none;
+   padding: 10px 90px 10px 10px;
+   border: none;
+   background: #fff;
+   max-width: 260px;
 }
 
-.singleCoverImg {
-  align-self: baseline;
-  margin-left: 5%;
-  position: relative;
-}
-
-.detail {
+.gameDetail {
   margin-top: 30px;
 }
 
-.content {
+.gameGallery {
   margin: auto;
   width: 95%;
 }
 
-.slider {
+.gameSlider {
   margin: 80px auto 50px;
 }
-
 
 .slick-prev:before, .slick-next:before {
   color: #000000;
@@ -398,15 +423,15 @@ img.parallax-slider {
   padding: 10px;
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
+/****************************
+
+footer styles 
+
+****************************/
+
+footer { 
+  font-weight: bold; 
+  text-align: center;
 }
 
 #footer {
@@ -449,7 +474,11 @@ img.parallax-slider {
   border: solid 2px #ef1a28;
 }
 
-/*** form styles ***/
+/****************************
+
+general form styles 
+
+****************************/
 
 .formContainer {
   margin: 10% 30%;
@@ -457,46 +486,15 @@ img.parallax-slider {
   border: solid 1px #b2b2b2;
 }
 
-#inverse-button {
-  border: none;
-  border-radius: 0;
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  background: #ef1a28;
-  cursor: pointer;
-  padding: 15px 40px;
-  display: inline-block;
-  margin: 20px auto;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  outline: none;
-  position: relative;
-}
-
-#inverse-button:after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-}
-
-#inverse-button {
-  border: 3px solid #ef1a28;
-  color: #fff;
-}
-
-#inverse-button:hover,
-#inverse-button:active {
-  color: #fff;
-  background: #940000;
-  border: 3px solid #940000;
-}
-
 #legend {
   border: 0;
 }
 
-/****** Media Queries *****/
+/****************************
+
+media queries
+
+****************************/
 
 @media only screen and (max-width: 950px) {
   figure.effect-portfolio p {
@@ -518,7 +516,6 @@ img.parallax-slider {
   .formContainer {
     margin: 10px 50px;
   }
-  /* Hide hover effects for mobile */
   figure.effect-portfolio:hover img {
     -webkit-transform: none;
     transform: none;
@@ -538,9 +535,9 @@ img.parallax-slider {
     max-width: 300px;
   }
   #profile-info, #gamelist-info {
-   text-align: center;
-   margin-top: 30px;
-   margin-left: -40px;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: -40px;
   }
   #user-buttons #button, #gamelist-info #button {
     background: #D3D3D3;

@@ -22,7 +22,7 @@ if (!gameData.videos) {
 
 <div class='parallax-window gameBackground' data-parallax='scroll' data-image-src='<%= imageURL + hugeURL + gameData.screenshots[0].cloudinary_id%>'>
 	<h1 class='gameTitle'><%= gameData.name %></h1>
-	<img class='singleCoverImg' src='<%= imageURL + coverURL + gameData.cover.cloudinary_id %>'>
+	<img class='gameCoverImg' src='<%= imageURL + coverURL + gameData.cover.cloudinary_id %>'>
 	
 	<!-- add game to gamelist section -->
 	<div class='col-xs-11'>
@@ -34,7 +34,7 @@ if (!gameData.videos) {
 
 			<!-- add game to gamelist button -->
 			<div class="dropdown">
-			  	<button id="addGameButton" class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Add to A List
+			  	<button id="gameAddButton" class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Add to A List
 			  		<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
@@ -55,7 +55,7 @@ if (!gameData.videos) {
 
 
 
-<div class='row detail'>
+<div class='row gameDetail'>
 	<div class='col-xs-offset-4 col-xs-6'>
 		<%if (gameData.summary) { %>
 			<p><%= gameData.summary %></p>
@@ -68,8 +68,8 @@ if (!gameData.videos) {
 </div>
   
 
-<div class="content">
-  <div class="slider">
+<div class="gameGallery">
+  <div class="gameSlider">
 		<% gameData.screenshots.forEach(function(screenshot) { %>
 		   <div class="image">
 			<div>

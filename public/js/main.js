@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-$('.slider').slick({
+$('.gameSlider').slick({
   dots: true,
   infinite: true,
   speed: 300,
