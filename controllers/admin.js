@@ -21,18 +21,6 @@ router.delete('/gamelists/:id',(req,res)=>{
   })
 })
 
-router.get('/games/:id',(req,res)=>{
-  Game.find({}, (err,Games)=>{
-    res.render('admin/admin-games.ejs', {
-      games: Games
-    })
-  })
-})
-router.delete('/games/:id',(req,res)=>{
-  Game.findByIdAndRemove(req.params.id, (err,foundGame)=>{
-    res.redirect('/admin/games');
-  })
-})
 
 router.get('/users',(req,res)=>{
   User.find({}, (err,Users)=>{
