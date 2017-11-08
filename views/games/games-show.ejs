@@ -40,7 +40,7 @@
 						  			<% if(currentUser) {%>
 						      			<% gamelists.forEach(function(gamelist) { %>
 						            		<li><input type='hidden' name='gamelistId' value='<%= currentUser.gamelist._id %>'><button id="gamelistPsuedoButton" type="submit"><%=currentUser.gamelist.title%></button></li>     
-						        		<% } %>
+						        		<% }) %>
 									<% } %>
 					  			</ul>
 						 	</div>
