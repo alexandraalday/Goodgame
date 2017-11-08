@@ -7,7 +7,6 @@
   <body>
     <% include ../partials/nav.ejs %>
 
-    <main>
       <div id="profile" class="jumbotron">
         <img id="profile-icon" src="<%=user.icon%>">
         <div id="profile-info">
@@ -50,11 +49,10 @@
                   </figcaption>
                 </figure>
               </div>
-            <% } %>
+            <% }); %>
           </div>
         </div>
       </section>
-    </main>
 
   </body>
   
