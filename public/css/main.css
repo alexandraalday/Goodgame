@@ -534,7 +534,6 @@ img.parallax-slider {
     -webkit-transform: none;
     transform: none;
   }
-
   #gamelist-icon {
     margin-top: 100px;
     margin-left: -75px;
@@ -550,7 +549,6 @@ img.parallax-slider {
     border: 3px solid #D3D3D3;
     color: #fff;
   }
-
 }
 
 @media only screen and (min-width: 768px) and (max-width: 950px) {
