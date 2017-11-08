@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/head.ejs %>
+  </head>
+  <body>
+    <% include ../partials/newusernav.ejs %>
+
+    <main style="padding-top: 150px">
+
+    <a href="/admin">Back to Admin</a>
+    <br/><br/>
+    <ul>
+      <% for (let i = 0; i < gamelists.length; i++) { %>
+        <li><%=gamelists[i].title%></li>
+        <form action="/admin/gamelists/<%=gamelists[i]._id%>?_method=DELETE" method="POST">
+          <input type="submit" value="Delete Gamelist"/>
+        </form>
+      <% } %>
+    </ul>
+  </body>
+</html>
