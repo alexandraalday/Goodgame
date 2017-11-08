@@ -2,42 +2,41 @@
 <html>
   <head>
     <% include ../partials/head.ejs %>
-
   </head>
+  
   <body>
+    <% include ../partials/nav.ejs %>
 
-  <% include ../partials/nav.ejs %>
-
-   <main style="padding-top: 70px">
-    <!-- begin portfolio style section -->
+    <main>
       <section id="portfolio" name="portfolio">
-      <div class="container">
-        <div class="row text-center">
-          <h1>BROWSE USERS</h1>
-          <hr class="separator separator-dark">
+        <div class="container">
+          <div class="row text-center">
+            <h1>BROWSE USERS</h1>
+            <hr class="separator separator-dark">
+          </div>
+        
+          <div class="row">
+            <% users.forEach(function(user) { %>
+              <div class="col-md-4 portfolio-item">
+                <figure class="effect-portfolio">
+                  <img class="img-responsive" src="<%=user.icon%>">
+                  <figcaption>
+                    <h2><span><%=user.username%></span></h2>
+                    <p><%=user.description%></p>
+                    <a href="/users/<%=user.id%>"></a>
+                  </figcaption>
+                </figure>
+              </div>
+            <% }); %>
+          </div>
         </div>
-        <!-- end section title row -->
-        <div class="row">
-        <% for(let i = 0; i < users.length; i++) { %>
-          <div class="col-md-4 portfolio-item">
-            <figure class="effect-portfolio">
-              <img class="img-responsive" src="<%=users[i].icon%>">
-              <figcaption>
-                <h2><span><%=users[i].username%></span></h2>
-                <p><%=users[i].description%>
-                </p>
-                <a href="/users/<%=users[i].id%>"></a>
-              </figcaption>
-            </figure>
-          </div><!-- end column -->
-          <% } %>
-        </div><!-- end row -->
-      </div><!-- end container -->
-    </section><!-- end  portfolio section -->
-  </main>
+      </section>
+    </main>
 
-</body>
-<footer>
-  <% include ../partials/footer.ejs %>
-</footer>
+  </body>
+  
+  <footer>
+    <% include ../partials/footer.ejs %>
+  </footer>
+
 </html>
