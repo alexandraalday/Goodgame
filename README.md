@@ -46,7 +46,7 @@ First, general users of this application are people who wish to view other users
 
 * Users land on the home page and read about how Goodgame works, see 6 sample gamelists, and contact info
 * Users can navigate different views in the top navigation bar: Googdame title and logo; links to Users, Gamelists, Games,  Login, and Register. Login becomes logout once a user is logged in to the site
-* Users can view other users' about page with her profile photo, bio, and gamelists
+* Users can view other users' about page with their profile photo, bio, and gamelists
 * Users can view gamelist page with details and a grid of games in a selected User's gamelist
 
 Another user of this application is the registered user who logs in to maintain their own profile and gamelists.
