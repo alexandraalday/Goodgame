@@ -3,44 +3,42 @@
   <head>
     <% include ../partials/head.ejs %>
   </head>
+  
   <body>
-  <% include ../partials/nav.ejs %>
+    <% include ../partials/nav.ejs %>
 
-
-   <main style="padding-top: 70px">
-
-   
-    <!-- begin portfolio style section -->
+    <main>
       <section id="portfolio" name="portfolio">
-      <div class="container">
-        <div class="row text-center">
-          <h1>BROWSE GAMELISTS</h1>
-          <hr class="separator separator-dark">
-          <a id="inverse-button" class="btn btn-danger text-center" href="/gamelists/new">Add A Gamelist</a>
+        <div class="container">
+          <div class="row text-center">
+            <h1>BROWSE GAMELISTS</h1>
+            <hr class="separator separator-dark">
+            <a id="inverse-button" class="btn btn-danger text-center" href="/gamelists/new">Add A Gamelist</a>
+          </div>
+
+          <div class="grid">
+          <% gamelists.forEach(function(gamelist) { %>
+            <div class="portfolio-item">
+              <figure class="effect-portfolio">
+                <img class="img-responsive" src="<%=gamelist.coverImage%>">
+                <figcaption>
+                  <h2><%=gamelist.title%><br/>
+                  <span><h4><%=gamelist.author%></h4></span></h2>
+                  <p><%=gamelist.description%></p>
+                  <a href="/gamelists/<%=gamelist.id%>"></a>
+                </figcaption>
+              </figure>
+            </div>
+            <% }) %>
+          </div>
         </div>
-        <!-- end section title row -->
-        <div class="grid">
-        <% for(let i = 0; i < gamelists.length; i++) { %>
-          <div class="portfolio-item">
-            <figure class="effect-portfolio">
-              <img class="img-responsive" src="<%=gamelists[i].coverImage%>">
-              <figcaption>
-                <h2><%=gamelists[i].title%><br/>
-                <span><h4><%=gamelists[i].author%></h4></span></h2>
-                <p><%=gamelists[i].description%>
-                </p>
-                <a href="/gamelists/<%=gamelists[i].id%>"></a>
-              </figcaption>
-            </figure>
-          </div><!-- end column -->
-          <% } %>
-        </div><!-- end row -->
-      </div><!-- end container -->
-    </section><!-- end  portfolio section -->
-  </main>
+      </section>
+    </main>
 
   </body>
+  
   <footer>
     <% include ../partials/footer.ejs %>
   </footer>
+
 </html>

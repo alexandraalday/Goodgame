@@ -3,59 +3,60 @@
   <head>
     <% include ../partials/head.ejs %>
   </head>
-  <body>
-  <% include ../partials/nav.ejs %>
-
-<% 
-let imageURL = 'https://images.igdb.com/igdb/image/upload/'
-let coverURL = 't_cover_big/'
-%>
-
-  <!-- begin profile jumbotron section -->
-    <div id="gamelist" class="jumbotron">
-      <img id="gamelist-icon" src="<%=gamelist.coverImage%>">
-      <div id="gamelist-info">
-        <h1><%=gamelist.title%></h1>
-        <h3>A gamelist by: <%=gamelist.author%></a></h3>
-        <p><%=gamelist.description%></p>
-        <% if(currentUser) {%>
-        <div id="gamelist-buttons">
-          <form action="/gamelists/edit/<%=gamelist.id%>">
-            <input id="inverse-button" class="btn btn-secondary" type="submit" value="Update"/>
-          </form>
-          <form action="/gamelists/<%=gamelist.id%>?_method=DELETE" method="POST">
-              <input id="button" class="btn btn-danger" type="submit" value="Remove" />
-          </form>
-        <% } %>
-      </div>
-      </div>
-    </div>
-
-      <!-- begin user edit/delete buttons -->
-    <div class="col-sm-12 text-center">
-    <% if(currentUser) {%>
-           <a id="inverse-button" class="btn btn-primary" href="/games">Add A Game</a>
-        <% } %>
-    </div>
   
-    <!-- begin portfolio style section -->
-    <section id="portfolio" name="portfolio">
-    <div class="container">
-      <div class="row">
-      <% for(let i = 0; i < gamelist.games.length; i++) { %>
-        <div class="col-md-4 portfolio-item">
-          <figure>
-            <a href='/games/<%=gamelist.games[i].igdbId%>'><img src="<%=gamelist.games[i].cover%>"></a>
-          </figure>
-        </div><!-- end column -->
-        <% } %>
-      </div><!-- end row -->
-    </div><!-- end container -->
-  </section>
+  <body>
+    <% include ../partials/nav.ejs %>
 
+    <main>
+      <% 
+      let imageURL = 'https://images.igdb.com/igdb/image/upload/'
+      let coverURL = 't_cover_big/'
+      %>
+
+      <div id="gamelist" class="jumbotron">
+        <img id="gamelist-icon" src="<%=gamelist.coverImage%>">
+        <div id="gamelist-info">
+          <h1><%=gamelist.title%></h1>
+          <h3>A gamelist by: <%=gamelist.author%></h3>
+          <p><%=gamelist.description%></p>
+          <% if(currentUser) {%>
+            <div id="gamelist-buttons">
+              <form action="/gamelists/edit/<%=gamelist.id%>">
+                <input id="inverse-button" class="btn btn-secondary" type="submit" value="Update"/>
+              </form>
+              <form action="/gamelists/<%=gamelist.id%>?_method=DELETE" method="POST">
+                  <input id="button" class="btn btn-danger" type="submit" value="Remove" />
+              </form>
+            </div>
+          <% } %> 
+        </div>
+      </div>
+
+      <div class="col-sm-12 text-center">
+        <% if(currentUser) {%>
+          <a id="inverse-button" class="btn btn-primary" href="/games">Add A Game</a>
+        <% } %>
+      </div>
+    
+      <section id="portfolio" name="portfolio">
+        <div class="container">
+          <div class="row">
+            <% gamelist.games.forEach(function(game) { %>
+              <div class="col-md-4 portfolio-item">
+                <figure>
+                  <a href='/games/<%=game.igdbId%>'><img src="<%=game.cover%>"></a>
+                </figure>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      </section>
+    </main>
 
   </body>
+  
   <footer>
     <% include ../partials/footer.ejs %>
   </footer>
+
 </html>
