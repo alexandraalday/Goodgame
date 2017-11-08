@@ -38,8 +38,8 @@
 								</button>
 								<ul class="dropdown-menu">
 						  			<% if(currentUser) {%>
-						      			<% for(let i = 0; i < currentUser.gamelists.length; i++) { %>
-						            		<li><input type='hidden' name='gamelistId' value='<%= currentUser.gamelists[i]._id %>'><button id="gamelistPsuedoButton" type="submit"><%=currentUser.gamelists[i].title%></button></li>     
+						      			<% gamelists.forEach(function(gamelist) { %>
+						            		<li><input type='hidden' name='gamelistId' value='<%= currentUser.gamelist._id %>'><button id="gamelistPsuedoButton" type="submit"><%=currentUser.gamelist.title%></button></li>     
 						        		<% } %>
 									<% } %>
 					  			</ul>
