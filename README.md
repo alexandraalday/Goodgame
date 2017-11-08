@@ -36,7 +36,7 @@ Originally, this app only consumed its own API and users had to manually enter a
 
 I was looking to practice using slick carousel and parallax effects. Both the parallax header and the slick carousel of images and videos are dynamically rendered using IGDB endpoints from the user's search results. 
 
-![screencapture-localhost-3000-games-8173-1507771208930](https://user-images.githubusercontent.com/17508245/31474658-f4edb164-aeb0-11e7-8e27-493ef5743e9d.png)
+![screencapture-localhost-3000-games-25657-1510159513514](https://user-images.githubusercontent.com/17508245/32561563-604e135c-c461-11e7-9976-b9112520855b.png)
 
 
 ### User Stories: 
