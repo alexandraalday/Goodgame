@@ -68,6 +68,7 @@ router.get('/edit-games/:id', (req, res)=>{
 
 // edit gamelist info
 router.put('/:id', (req, res)=>{
+  req.body.author = req.session.currentUser.username; 
   Gamelist.findByIdAndUpdate(req.params.id, req.body, (err, updatedGamelist)=>{
     Gamelist.findOneAndUpdate(
       {_id: req.params.id},

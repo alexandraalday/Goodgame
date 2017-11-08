@@ -12,21 +12,26 @@
       <div id="profile-info">
         <h1><%=user.username%></h1>
         <p><%=user.description%></p>
-        <p><a class="btn btn-danger btn-lg" type="button" href="#portfolio" role="button">Gamelists <span class="badge"><%=user.gamelists.length%></span></a></p>
+        <div id="user-buttons" class="col-sm-4 text-center">
+        <% if(currentUser) {%>
+            <% if(currentUser.username === user.username) {%>
+              <form action="/users/<%=user.id%>/edit">
+                <input class="btn btn-secondary" id="inverse-button" type="submit" value="Edit User"/>
+                </form>
+              <form action="/users/<%=user.id%>?_method=DELETE" method="POST">
+                  <input class="btn btn-danger" id="button" type="submit" value="Delete User" />
+              </form>
+            <% } %>
+        <% } %>
+        </div>
       </div>
     </div>
 
 <!-- begin user edit/delete buttons -->
-    <div id="user-buttons" class="col-sm-4 text-center">
+    <div class="col-sm-12 text-center">
     <% if(currentUser) {%>
         <% if(currentUser.username === user.username) {%>
-          <form action="/users/<%=user.id%>/edit">
-            <input class="btn btn-secondary" type="submit" value="Edit User"/>
-            </form>
-          <form action="/users/<%=user.id%>?_method=DELETE" method="POST">
-              <input class="btn btn-danger" type="submit" value="Delete User" />
-          </form>
-          <a class="btn btn-primary" href="/gamelists/new">Add A Gamelist</a>
+          <a id="inverse-button" class="btn btn-primary" href="/gamelists/new">Add A Gamelist</a>
         <% } %>
     <% } %>
     </div>
@@ -34,10 +39,6 @@
     <!-- begin portfolio style section -->
     <section id="portfolio" name="portfolio">
     <div class="container">
-      <div class="row text-center">
-        <h1>GAMELISTS</h1>
-        <hr class="separator separator-dark">
-      </div>
       <!-- end section title row -->
       <div class="row">
       <% for(let i = 0; i < user.gamelists.length; i++) { %>

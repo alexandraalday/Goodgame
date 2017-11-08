@@ -39,7 +39,7 @@ let $grid = $('.grid').imagesLoaded( function(){
   $grid.masonry({
     itemSelector: '.portfolio-item',
     columnWidth: 300,
-    isAnimated: !Modernizr.csstransitions,
+    isAnimated: csstransitions,
     easing: 'linear' 
   });
 });

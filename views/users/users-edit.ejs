@@ -2,21 +2,17 @@
 <html>
   <head>
     <% include ../partials/head.ejs %>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"> 
   </head>
   <body>
   <% include ../partials/nav.ejs %>
 
-  <main style="padding-top: 70px">
+  <main style="padding: 150px 0">
 
 <!--  new user form -->
 <form class="form-horizontal" action="/users/<%=user.id%>?_method=PUT" method="POST">
   <fieldset>
-    <legend class="col-lg-10 col-lg-offset-2">Edit User</legend>
-    <div class="form-group">
-      <label class="col-lg-2 control-label">Password</label>
-      <div class="col-lg-6">
-        <input class="form-control" name="password" placeholder="Password" type="password">
-      </div>
+    <legend id="legend" class="col-lg-10 col-lg-offset-2"><h3>Edit User</h3></legend>
     </div>
     <div class="form-group">
       <label class="col-lg-2 control-label">Profile Image</label>
@@ -33,8 +29,7 @@
 
     <div class="form-group">
       <div class="col-lg-6 col-lg-offset-2">
-        <input type="reset" class="btn btn-default"></input>
-        <input type="submit" class="btn btn-primary"></input>
+        <input id="inverse-button" type="submit" class="btn btn-primary"></input>
       </div>
     </div>
   </fieldset>

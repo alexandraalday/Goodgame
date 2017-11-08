@@ -328,11 +328,9 @@ footer {
   display: flex;
 }
 
-#gamelist-buttons #button {
+#user-buttons #button, #gamelist-buttons #button {
   margin: 18px 10px;
 }
-
-
 
 .gameBackground {
   display: flex;
@@ -534,17 +532,17 @@ img.parallax-slider {
     -webkit-transform: none;
     transform: none;
   }
-  #gamelist-icon {
+  #profile-icon, #gamelist-icon {
     margin-top: 100px;
     margin-left: -75px;
     max-width: 300px;
   }
-  #gamelist-info {
+  #profile-info, #gamelist-info {
    text-align: center;
    margin-top: 30px;
    margin-left: -40px;
   }
-  #gamelist-info #button {
+  #user-buttons #button, #gamelist-info #button {
     background: #D3D3D3;
     border: 3px solid #D3D3D3;
     color: #fff;
@@ -559,7 +557,7 @@ img.parallax-slider {
     color: #fff;
     padding: 200px 0;
   }
-  #gamelist-icon {
+  #profile-icon, #gamelist-icon {
     max-width: 300px;
   }
 }
