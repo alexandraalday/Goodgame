@@ -45,7 +45,7 @@ let coverURL = 't_cover_big/'
       <% for(let i = 0; i < gamelist.games.length; i++) { %>
         <div class="col-md-4 portfolio-item">
           <figure>
-            <img src="<%=gamelist.games[i].cover%>">
+            <a href='/games/<%=gamelist.games[i].igdbId%>'><img src="<%=gamelist.games[i].cover%>"></a>
           </figure>
         </div><!-- end column -->
         <% } %>
