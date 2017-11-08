@@ -34,6 +34,9 @@ app.use(function(req, res, next) {
 });
 
 //	CONTROLLERS
+const adminController = require('./controllers/admin.js');
+app.use('/admin', adminController);
+
 const userController = require('./controllers/users.js');
 app.use('/users', userController);
 
