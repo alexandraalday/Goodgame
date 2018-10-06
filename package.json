@@ -19,6 +19,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
+    "cryptiles": "^4.1.2",
     "dotenv": "^6.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
@@ -26,6 +27,7 @@
     "hoek": "^5.0.4",
     "masonry-layout": "^4.2.2",
     "method-override": "^3.0.0",
+    "mime": "^2.3.1",
     "mongoose": "^5.3.1",
     "request": "^2.88.0",
     "unirest": "^0.5.1"
