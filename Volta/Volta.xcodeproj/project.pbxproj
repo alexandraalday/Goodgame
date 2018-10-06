@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A8CDCF261FB424D400A40220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CDCF251FB424D400A40220 /* AppDelegate.swift */; };
+		A8CDCF281FB424D400A40220 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CDCF271FB424D400A40220 /* ViewController.swift */; };
+		A8CDCF2B1FB424D400A40220 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8CDCF291FB424D400A40220 /* Main.storyboard */; };
+		A8CDCF2D1FB424D400A40220 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8CDCF2C1FB424D400A40220 /* Assets.xcassets */; };
+		A8CDCF301FB424D400A40220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8CDCF2E1FB424D400A40220 /* LaunchScreen.storyboard */; };
+		A8CDCF3B1FB424D400A40220 /* VoltaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CDCF3A1FB424D400A40220 /* VoltaTests.swift */; };
+		A8CDCF461FB424D400A40220 /* VoltaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CDCF451FB424D400A40220 /* VoltaUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A8CDCF371FB424D400A40220 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8CDCF1A1FB424D400A40220 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8CDCF211FB424D400A40220;
+			remoteInfo = Volta;
+		};
+		A8CDCF421FB424D400A40220 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A8CDCF1A1FB424D400A40220 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8CDCF211FB424D400A40220;
+			remoteInfo = Volta;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A8CDCF221FB424D400A40220 /* Volta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Volta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8CDCF251FB424D400A40220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A8CDCF271FB424D400A40220 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A8CDCF2A1FB424D400A40220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A8CDCF2C1FB424D400A40220 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A8CDCF2F1FB424D400A40220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A8CDCF311FB424D400A40220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8CDCF361FB424D400A40220 /* VoltaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoltaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8CDCF3A1FB424D400A40220 /* VoltaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoltaTests.swift; sourceTree = "<group>"; };
+		A8CDCF3C1FB424D400A40220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8CDCF411FB424D400A40220 /* VoltaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoltaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8CDCF451FB424D400A40220 /* VoltaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoltaUITests.swift; sourceTree = "<group>"; };
+		A8CDCF471FB424D400A40220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A8CDCF1F1FB424D400A40220 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8CDCF331FB424D400A40220 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8CDCF3E1FB424D400A40220 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A8CDCF191FB424D400A40220 = {
+			isa = PBXGroup;
+			children = (
+				A8CDCF241FB424D400A40220 /* Volta */,
+				A8CDCF391FB424D400A40220 /* VoltaTests */,
+				A8CDCF441FB424D400A40220 /* VoltaUITests */,
+				A8CDCF231FB424D400A40220 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A8CDCF231FB424D400A40220 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A8CDCF221FB424D400A40220 /* Volta.app */,
+				A8CDCF361FB424D400A40220 /* VoltaTests.xctest */,
+				A8CDCF411FB424D400A40220 /* VoltaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A8CDCF241FB424D400A40220 /* Volta */ = {
+			isa = PBXGroup;
+			children = (
+				A8CDCF251FB424D400A40220 /* AppDelegate.swift */,
+				A8CDCF271FB424D400A40220 /* ViewController.swift */,
+				A8CDCF291FB424D400A40220 /* Main.storyboard */,
+				A8CDCF2C1FB424D400A40220 /* Assets.xcassets */,
+				A8CDCF2E1FB424D400A40220 /* LaunchScreen.storyboard */,
+				A8CDCF311FB424D400A40220 /* Info.plist */,
+			);
+			path = Volta;
+			sourceTree = "<group>";
+		};
+		A8CDCF391FB424D400A40220 /* VoltaTests */ = {
+			isa = PBXGroup;
+			children = (
+				A8CDCF3A1FB424D400A40220 /* VoltaTests.swift */,
+				A8CDCF3C1FB424D400A40220 /* Info.plist */,
+			);
+			path = VoltaTests;
+			sourceTree = "<group>";
+		};
+		A8CDCF441FB424D400A40220 /* VoltaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A8CDCF451FB424D400A40220 /* VoltaUITests.swift */,
+				A8CDCF471FB424D400A40220 /* Info.plist */,
+			);
+			path = VoltaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A8CDCF211FB424D400A40220 /* Volta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8CDCF4A1FB424D400A40220 /* Build configuration list for PBXNativeTarget "Volta" */;
+			buildPhases = (
+				A8CDCF1E1FB424D400A40220 /* Sources */,
+				A8CDCF1F1FB424D400A40220 /* Frameworks */,
+				A8CDCF201FB424D400A40220 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Volta;
+			productName = Volta;
+			productReference = A8CDCF221FB424D400A40220 /* Volta.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A8CDCF351FB424D400A40220 /* VoltaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8CDCF4D1FB424D400A40220 /* Build configuration list for PBXNativeTarget "VoltaTests" */;
+			buildPhases = (
+				A8CDCF321FB424D400A40220 /* Sources */,
+				A8CDCF331FB424D400A40220 /* Frameworks */,
+				A8CDCF341FB424D400A40220 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8CDCF381FB424D400A40220 /* PBXTargetDependency */,
+			);
+			name = VoltaTests;
+			productName = VoltaTests;
+			productReference = A8CDCF361FB424D400A40220 /* VoltaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A8CDCF401FB424D400A40220 /* VoltaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8CDCF501FB424D400A40220 /* Build configuration list for PBXNativeTarget "VoltaUITests" */;
+			buildPhases = (
+				A8CDCF3D1FB424D400A40220 /* Sources */,
+				A8CDCF3E1FB424D400A40220 /* Frameworks */,
+				A8CDCF3F1FB424D400A40220 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8CDCF431FB424D400A40220 /* PBXTargetDependency */,
+			);
+			name = VoltaUITests;
+			productName = VoltaUITests;
+			productReference = A8CDCF411FB424D400A40220 /* VoltaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A8CDCF1A1FB424D400A40220 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Alexandra Alday";
+				TargetAttributes = {
+					A8CDCF211FB424D400A40220 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					A8CDCF351FB424D400A40220 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A8CDCF211FB424D400A40220;
+					};
+					A8CDCF401FB424D400A40220 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A8CDCF211FB424D400A40220;
+					};
+				};
+			};
+			buildConfigurationList = A8CDCF1D1FB424D400A40220 /* Build configuration list for PBXProject "Volta" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A8CDCF191FB424D400A40220;
+			productRefGroup = A8CDCF231FB424D400A40220 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A8CDCF211FB424D400A40220 /* Volta */,
+				A8CDCF351FB424D400A40220 /* VoltaTests */,
+				A8CDCF401FB424D400A40220 /* VoltaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A8CDCF201FB424D400A40220 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8CDCF301FB424D400A40220 /* LaunchScreen.storyboard in Resources */,
+				A8CDCF2D1FB424D400A40220 /* Assets.xcassets in Resources */,
+				A8CDCF2B1FB424D400A40220 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8CDCF341FB424D400A40220 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8CDCF3F1FB424D400A40220 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A8CDCF1E1FB424D400A40220 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8CDCF281FB424D400A40220 /* ViewController.swift in Sources */,
+				A8CDCF261FB424D400A40220 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8CDCF321FB424D400A40220 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8CDCF3B1FB424D400A40220 /* VoltaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8CDCF3D1FB424D400A40220 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8CDCF461FB424D400A40220 /* VoltaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A8CDCF381FB424D400A40220 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8CDCF211FB424D400A40220 /* Volta */;
+			targetProxy = A8CDCF371FB424D400A40220 /* PBXContainerItemProxy */;
+		};
+		A8CDCF431FB424D400A40220 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8CDCF211FB424D400A40220 /* Volta */;
+			targetProxy = A8CDCF421FB424D400A40220 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A8CDCF291FB424D400A40220 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8CDCF2A1FB424D400A40220 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A8CDCF2E1FB424D400A40220 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8CDCF2F1FB424D400A40220 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A8CDCF481FB424D400A40220 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A8CDCF491FB424D400A40220 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A8CDCF4B1FB424D400A40220 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Volta/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Alexandra-Alday.Volta";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A8CDCF4C1FB424D400A40220 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Volta/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Alexandra-Alday.Volta";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A8CDCF4E1FB424D400A40220 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VoltaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Alexandra-Alday.VoltaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Volta.app/Volta";
+			};
+			name = Debug;
+		};
+		A8CDCF4F1FB424D400A40220 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VoltaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Alexandra-Alday.VoltaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Volta.app/Volta";
+			};
+			name = Release;
+		};
+		A8CDCF511FB424D400A40220 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VoltaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Alexandra-Alday.VoltaUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Volta;
+			};
+			name = Debug;
+		};
+		A8CDCF521FB424D400A40220 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VoltaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Alexandra-Alday.VoltaUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Volta;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A8CDCF1D1FB424D400A40220 /* Build configuration list for PBXProject "Volta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8CDCF481FB424D400A40220 /* Debug */,
+				A8CDCF491FB424D400A40220 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8CDCF4A1FB424D400A40220 /* Build configuration list for PBXNativeTarget "Volta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8CDCF4B1FB424D400A40220 /* Debug */,
+				A8CDCF4C1FB424D400A40220 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8CDCF4D1FB424D400A40220 /* Build configuration list for PBXNativeTarget "VoltaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8CDCF4E1FB424D400A40220 /* Debug */,
+				A8CDCF4F1FB424D400A40220 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8CDCF501FB424D400A40220 /* Build configuration list for PBXNativeTarget "VoltaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8CDCF511FB424D400A40220 /* Debug */,
+				A8CDCF521FB424D400A40220 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A8CDCF1A1FB424D400A40220 /* Project object */;
+}
