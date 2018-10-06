@@ -11,7 +11,7 @@ let apiHeaders = {
       'user-key': process.env.API_KEY,
       'Accept': 'application/json'
     };
-let igdbURL = 'https://api-2445582011268.apicast.io/games/'
+let igdbURL = 'https://api-endpoint.igdb.com/games/'
 
 // game search index route
 router.get('/', (req, res)=>{
